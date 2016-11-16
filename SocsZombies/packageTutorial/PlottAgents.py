@@ -7,9 +7,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import Agents as ag
 from matplotlib import gridspec
+from IPython.core.pylabtools import figsize
 
 class PlotIntoScatter:
-    def PlottAgents(self, AllFields, nRasterDimension, lst_nGeneration=None, lst_nIndSusceptibles=None, lst_nIndInfected=None, lst_nIndRecovered=None):
+    def PlottAgents(self, AllFields, nRasterDimension,
+                    lst_nGeneration=None, lst_nIndSusceptibles=None, 
+                    lst_nIndInfected=None, lst_nIndRecovered=None,
+                    nDiffusionRate_d = None, nGamma = None, nBeta = None
+                    ):
 
 
         #========================================
@@ -19,15 +24,23 @@ class PlotIntoScatter:
         myAgentGetter = ag.GetListOfAgents()
 
         plt.ion()
-        plt.figure(1)
-        plt.figaspect(21.9)
-        #gs = gridspec.GridSpec(1, 2, width_ratios=[1, 1]) 
+        figsize=(21, 7)
+        figname='Task1'
+        plt.figure(figname,figsize)
+        plt.figure(figname)
+        gs = gridspec.GridSpec(1, 2, 
+                                width_ratios=[1, 2])
+                                #height_ratios=[1,1])
+        
         plt.clf()
         plt.draw()
         plt.axis([0, nRasterDimension, 0, nRasterDimension])
-        ax1 = plt.subplot(121)#gs[0])
-        #ax1.gca()
-        #ax1.set_aspect('equal')
+        #ax1 = plt.subplot(121)
+        ax1 = plt.subplot(gs[0])
+        #ax1.figsize=(10,10)
+        ax1.set(title=r'Lattice')
+        ax1.set(xlabel=r'x', ylabel=r'y')
+        ax1.set_aspect('equal')
         
         mySAgents = myAgentGetter.AllSusceptiblesSinglesCoordinates(AllFields)
         ## the data
@@ -60,15 +73,13 @@ class PlotIntoScatter:
         
         if lst_nGeneration:  
             plt.ion()
-#             plt.clf()
-#             plt.draw()
+            #ax2 = plt.subplot(122)
+            ax2 = plt.subplot(gs[1])
+            ax2.set(title = 'd = %s ; gamma = %s ; beta = %s ;' % (nDiffusionRate_d, nGamma, nBeta))
+            ax2.set(xlabel=r'Iteration', ylabel=r'Population density')
+            ax2.set_color_cycle(['blue', 'red', 'green'])
+            ax2.set_aspect('auto')
             
-            #x = np.linspace(0, 1, 10)
-            #fig, ax = plt.subplots()
-            ax = plt.subplot(122)#gs[1])#122)
-            #ax.set(aspect=1)
-            ax.set_color_cycle(['blue', 'red', 'green'])
-            #plt.subplot(122)
             plt.plot(lst_nGeneration, lst_nIndSusceptibles)
             plt.plot(lst_nGeneration, lst_nIndInfected)
             plt.plot(lst_nGeneration, lst_nIndRecovered)
@@ -76,6 +87,7 @@ class PlotIntoScatter:
             plt.draw()
             plt.pause(0.005)
             plt.ioff()  
+            plt.savefig(figname + '.pdf')
     #
 
 #     def PlottProportionsOfIndividuals(self, lst_nGeneration, lst_nIndSusceptibles, lst_nIndInfected, lst_nIndRecovered):

@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import Agents as ag
 import RandomWalk as rw
 import PlottAgents as plag
-import ChangeAgentStatus 
+import ChangeAgentStatus
 #=========================
 #http://stackoverflow.com/questions/409370/sorting-and-grouping-nested-lists-in-python
 from pprint import pprint as pp
@@ -32,11 +32,11 @@ import operator
 # f.e. 4x4   I****I
 #            I****I
 #            I****I
-nRasterDimension =10
+nRasterDimension =50
 #========================================
 # Individuals
 #========================================
-nIndividualsSusceptibles_S = 30
+nIndividualsSusceptibles_S = 450
 nIndividualsInfected_I = 10
 nIndividualsRecovered_R = 0
 nIndividualsAll_N = nIndividualsSusceptibles_S + nIndividualsInfected_I + nIndividualsRecovered_R
@@ -98,6 +98,7 @@ myInitAgent.InitializeIAgentsRandomly(AllFields, nRasterDimension, nIndividualsI
 #========================================
 myAgentPlotter = plag.PlotIntoScatter()
 myAgentPlotter.PlottAgents(AllFields,nRasterDimension)
+    
 ##############################################################################
 
 
@@ -204,7 +205,9 @@ while nIndividualsInfected_I >0:
     #for i in range(1000):
     if (nGenerations % PLOT_AGENTS_EVERY_N) == 0:    
         myAgentPlotter = plag.PlotIntoScatter()
-        myAgentPlotter.PlottAgents(AllFields,nRasterDimension,lst_nGeneration, lst_nIndSusceptibles, lst_nIndInfected, lst_nIndRecovered)  
+        myAgentPlotter.PlottAgents(AllFields,nRasterDimension,lst_nGeneration, lst_nIndSusceptibles, lst_nIndInfected, lst_nIndRecovered,
+                                   nDiffusionRate_d, nGamma, nBeta)  
+        
         #myAgentPlotter.PlottProportionsOfIndividuals(lst_nGeneration, lst_nIndSusceptibles, lst_nIndInfected, lst_nIndRecovered)
 ##############################################################################
     

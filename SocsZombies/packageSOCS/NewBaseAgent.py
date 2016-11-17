@@ -11,7 +11,7 @@ class NewBaseAgent:
     #
 
     def Move(self, grid):
-        # change position 
+        # change position this 
         oldPosition = [self.xPos, self.yPos]
         newPosition = []
         tmpReturn = [oldPosition, newPosition]
@@ -23,8 +23,9 @@ class NewBaseAgent:
 		return self.health
     #
         
-	def GetState(self)
-		return self.stateOfBeing
+	def GetState(self):
+		state = self.stateOfBeing
+		return state
 	#
 	
             

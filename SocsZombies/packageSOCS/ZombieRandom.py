@@ -1,6 +1,6 @@
 import numpy as np
 from Agent import Agent
-#human  that walkes randomly does not take in to consideration any obstacles for now
+#zombie that walkes randomly does not take in to consideration any obstacles for now
 ####################################################
 class ZombieRandom(Agent):
 	def __init__(self, xPos, yPos, health):

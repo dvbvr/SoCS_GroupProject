@@ -7,6 +7,7 @@ Group1
 ##################
 fieldInfo[xPos][yPos] = [nObstacle, nZombies, nHumans, agentIndexes, ... ]
 agentInfos[agentIndex] = agent
+PlotEnvironment(fieldInfo, nAgents) 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ##################
@@ -14,9 +15,11 @@ agentInfos[agentIndex] = agent
 ##################
 plotEnvironment -> Dorian
 ________________________
-firstMain -> Robin 
+firstMain, randomAgent -> Robin 
 ________________________
 report, theory of simple-reflex agents -> Lars
+________________________
+theory of learning agents -> Esteban
 ________________________
 Everyone should play with the code when you recieve the "start coding" SMS.
 This means making some agents -> zggGroup

@@ -2,10 +2,10 @@ import numpy as np
 from Agent import Agent
 #human  that walkes randomly does not take in to consideration any obstacles for now
 ####################################################
-class HumanRandom(Agent):
+class ZombieRandom(Agent):
 	def __init__(self, xPos, yPos, health):
 		super().__init__(xPos, yPos, health)
-		self.stateOfBeing = 0;
+		self.stateOfBeing = 1;
     #
 
 	def Move(self, grid): 

@@ -6,7 +6,7 @@ class HumanRandom(Agent):
 	def __init__(self, xPos, yPos, health):
 		super().__init__(xPos, yPos, health)
 		self.stateOfBeing = 0;
-    #
+	#
 
 	def Move(self, grid): 
         # change position 
@@ -17,7 +17,7 @@ class HumanRandom(Agent):
 		newPosition = [xNew%modS,yNew%modS]
 		tmpReturn = [oldPosition, newPosition]
 		return tmpReturn
-    # 
+	# 
             
     
 

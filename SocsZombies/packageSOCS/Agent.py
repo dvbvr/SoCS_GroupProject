@@ -2,12 +2,13 @@
 
 ####################################################
 class Agent:
-    
+
 	def __init__(self, xPos, yPos ,health):
-		self.xPos = xPos
+        self.xPos = xPos
 		self.yPos = yPos
 		self.health = health
 		self.stateOfBeing = 0 #0 for human 1 for zombie
+		self.alive = True # True for Human False for Zombie
 	#
 	
 	def Move(self, grid):
@@ -27,10 +28,3 @@ class Agent:
 		state = self.stateOfBeing
 		return state
 	#
-	
-            
-    
-
-
-
-        

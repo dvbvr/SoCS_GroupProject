@@ -10,7 +10,7 @@ fieldInfo[xPos][yPos] = [nObstacle, nZombies, nHumans, agentIndexes, ... ]
 agentInfos[agentIndex] = agent
 PlotEnvironment(fieldInfo, nAgents) 
 
-## 2 do
+## Todo:
 ### 20161118
 - [x] plotEnvironment -> Dorian
 - [ ] firstMain, randomAgent -> Robin 

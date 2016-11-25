@@ -47,10 +47,9 @@ class Plot(object):
                 lstThingsX.append(index[0])
                 lstThingsY.append(index[1])        
                 
-        #print(lstHumansX + lstHumansY)
-          
-        fig, ax = plt.subplots()
-        
+        plt.ion()                         
+        fig, ax = plt.subplots(figsize=(16, 9), dpi=120, facecolor='w')
+        ax.set_axis_bgcolor('green')
         ax.set_title("Environment",fontsize=14)
         ax.set_xlabel("x",fontsize=12)
         ax.set_ylabel("y",fontsize=12)
@@ -60,11 +59,12 @@ class Plot(object):
         ax.set_xlim(0, fieldSizeWidth)
         ax.set_ylim(0, fieldSizeHeight)
         
-        ax.scatter(lstHumansX, lstHumansY, color='blue', s=100, edgecolor='none', label='Human')
-        ax.scatter(lstZombiesX, lstZombiesY, color='red', s=100, edgecolor='none', label='Zombie') #color='tomato'
-        ax.scatter(lstThingsX, lstThingsY, color='gray', s=100, edgecolor='none', label='Thing')
+        ax.scatter(lstHumansX, lstHumansY, color='blue', s=300, edgecolor='black', label='Human')
+        ax.scatter(lstZombiesX, lstZombiesY, color='red', s=300, edgecolor='black', label='Zombie') #color='tomato'
+        ax.scatter(lstThingsX, lstThingsY, color='gray', s=300, edgecolor='black', label='Thing')
         
         ax.legend(numpoints=1,loc='lower left', bbox_to_anchor=(1.0, 0.5))
-        
-        plt.show()
+         
+        plt.draw()
+        plt.ioff()
     #

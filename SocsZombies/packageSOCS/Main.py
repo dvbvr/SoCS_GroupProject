@@ -50,7 +50,8 @@ for it in range(20):
 			fieldInfo[pos1[0]][pos1[1]][1] = fieldInfo[pos1[0]][pos1[1]][1] - 1 #one zombie removed
 			fieldInfo[pos2[0]][pos2[1]][1] = fieldInfo[pos2[0]][pos2[1]][1] + 1 #one zombie added
 		fieldInfo[pos2[0]][pos2[1]].append(i)	
-	#Plot.AllFields(Plot ,fieldInfo , 5 , 5) 
+	Plot.AllFields(Plot ,fieldInfo , 5 , 5) 
 	#The above line does one print and is probably the wrong way of using the plot code xD
 	#Also the import made on line 4 might be just as bad
 #
+plt.show()    

@@ -13,7 +13,7 @@ PlotEnvironment(fieldInfo, nAgents)
 ## Todo:
 ### 20161118
 - [x] plotEnvironment -> Dorian
-- [ ] firstMain, randomAgent -> Robin 
+- [x] firstMain, randomAgent -> Robin 
 - [ ] report, theory of simple-reflex agents -> Lars
 - [ ] theory of learning agents -> Esteban
 - [ ] Everyone should play with the code when you recieve the "start coding" SMS. This means making some agents -> zggGroup

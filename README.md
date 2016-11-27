@@ -13,12 +13,14 @@ PlotEnvironment(fieldInfo, nAgents)
 
 ## Todo:
 ### 20161118
-- [x] ~~plotEnvironment -> Dorian
+- [x] plotEnvironment -> Dorian
 - [x] firstMain, randomAgent -> Robin 
 - [ ] report, theory of simple-reflex agents -> Lars
 - [ ] theory of learning agents -> Esteban
-- [ ] Everyone should play with the code when you recieve the "start coding" SMS. This means making some agents -> zggGroup
-- [ ] [GitHub Basics](https://try.github.io/levels/1/challenges/1) -> zggGroup~~
+- [ ] Everyone should play with the code when you recieve the "start coding" SMS. This means making some agents
+  - [ ]  test
+- [ ] [GitHub Basics](https://try.github.io/levels/1/challenges/1) -> zggGroup
+~~
 
 ### 20161125
 GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]

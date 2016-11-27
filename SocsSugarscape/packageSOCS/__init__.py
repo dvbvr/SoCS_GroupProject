@@ -1,9 +1,10 @@
  
 from packageSOCS.Agent import Agent
 from packageSOCS.HumanRandom import HumanRandom
-from packageSOCS.Plot import Environment_Grid
+from packageSOCS.Plot import Environment
+
 from packageSOCS.InitializationMethods import Initialize
-from packageSOCS.TestEnvironment import *
+import packageSOCS.TestPlot
 
 
 from packageH1.ChangeAgentStatus import ChangeAgentStatus

@@ -15,9 +15,9 @@ from matplotlib.colors import LinearSegmentedColormap
 from mpl_toolkits.axes_grid1 import make_axes_locatable, axes_size
 
 
-class Environment_Grid(object):
+class Environment:
     
-    def AllFields(self, fieldInfo, fieldSizeWidth, fieldSizeHeight):    
+    def Grid(fieldInfo, fieldSizeWidth, fieldSizeHeight, PlotDelay):    
                                    
         ##################################
         # Get Information from fieldInfo 
@@ -83,23 +83,27 @@ class Environment_Grid(object):
         ##################################
         # The Figure
         ##################################
-        figsizeX =10
-        figSizeY = 10
-        plt.ion()   
+        figsizeX =18
+        figSizeY = 9                
+        figsize=(figsizeX,figSizeY)          # <--
+        figname='Sugarscape'
+        mainFigure = plt.figure(figname,figsize)
+        plt.ion()        
         plt.clf()
+        plt.draw()
         
-        fig, ax = plt.subplots(figsize=(figsizeX,figSizeY))    # <--
+        ax = mainFigure.add_subplot(111)        
+        ax.set_aspect('equal')
         ax.set_title("Environment",fontsize=14)
         ax.set_xlabel("x",fontsize=12)
         ax.set_ylabel("y",fontsize=12)
         ax.grid(True,linestyle='-',color='0.75')
         ax.set_xlim(-0.5, fieldSizeWidth+0.5-1)
         ax.set_ylim(-0.5, fieldSizeHeight+0.5-1)        
-                
+                                
         # Scatterplott the Agents Type I
-        ax = plt.gca()
         fAgentTypeI = ax.scatter(lstAgentTypeI_X, lstAgentTypeI_Y,                        
-                        s=100/figSizeY, #s=lstAgentHealth,
+                        s=100, #/figSizeY, #s=lstAgentHealth,
                         c=lstAgentHealth, #color='blue',
                         vmin=0, vmax=10,
                         marker = 's',
@@ -109,7 +113,7 @@ class Environment_Grid(object):
         
         # Scatterplott the Agents Type II        
         fAgentTypeII = ax.scatter(lstAgentTypeII_X, lstAgentTypeII_Y,                        
-                        s=100/figSizeY, #s=lstAgentHealthII,
+                        s=100, #/figSizeY, #s=lstAgentHealthII,
                         c=lstAgentHealthII, #color='blue',
                         vmin=0, vmax=10,
                         edgecolor='black', 
@@ -123,22 +127,23 @@ class Environment_Grid(object):
         legend.legendHandles[1].set_color('black')#plt.cm.Greens(.8))
         
         # Adding the colorbar for health
-        cbarHealth = plt.colorbar(fAgentTypeI, shrink = 0.5) #orientation='horizontal')
+        cbarHealth = mainFigure.colorbar(fAgentTypeI, shrink = 0.5) #orientation='horizontal')
         cbarHealth.set_label('Health of Agent')
         
         # plot the sugar as squares in a raster         
-        fSugar = plt.imshow(amountOfSugarOnAllFields, 
+        fSugar = ax.imshow(amountOfSugarOnAllFields, 
                         interpolation='none', 
                         cmap=cmapSugar,
                         vmin=0,
                         vmax=10)
         
         # Adding the colorbar
-        cbarAmountSugar = plt.colorbar(fSugar, shrink= 0.5) #fraction=0.046, pad=0.04,#orientation='horizontal')
+        cbarAmountSugar = mainFigure.colorbar(fSugar, shrink= 0.5) #fraction=0.046, pad=0.04,#orientation='horizontal')
         cbarAmountSugar.set_label('Amount of sugar') #, rotation=270)
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
-        
         plt.draw()
-        plt.ioff()
+        plt.pause(PlotDelay)
+        plt.ioff()  
+
 

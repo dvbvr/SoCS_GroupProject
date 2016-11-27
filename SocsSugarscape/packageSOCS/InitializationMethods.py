@@ -9,7 +9,7 @@ import numpy as np
       
 class Initialize:        
     
-    def Fields(self, fieldSizeWidth, fieldSizeHeight):        
+    def Fields(fieldSizeWidth, fieldSizeHeight):
         
         fieldInfo = np.zeros((fieldSizeHeight, fieldSizeWidth), dtype=object)
         

@@ -5,11 +5,6 @@ Created on 27.11.2016
 '''
 import numpy as np
 import matplotlib.pyplot as plt
-#from mpl_toolkits.axes_grid1 import make_axes_locatable
-import mpl_toolkits.axes_grid1
-from matplotlib.colors import LinearSegmentedColormap
-from mpl_toolkits.axes_grid1 import make_axes_locatable, axes_size
-
 import Plot
 import InitializationMethods
 
@@ -48,5 +43,10 @@ fieldInfo[4][3][1] = 6
 ##################################
 # Initialize fieldInfo
 ##################################
-Plot.Environment_Grid(fieldInfo,fieldSizeWidth, fieldSizeHeight)
+PlotDelay = 0.005
 
+
+for i in range(5):
+    Plot.Environment.Grid(fieldInfo,fieldSizeWidth, fieldSizeHeight, PlotDelay)
+
+plt.show()

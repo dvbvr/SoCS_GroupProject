@@ -10,9 +10,10 @@ fieldInfo[xPos][yPos] = [nObstacle, nZombies, nHumans, agentIndexes, ... ]
 agentInfos[agentIndex] = agent
 PlotEnvironment(fieldInfo, nAgents) 
 
-~~## Todo:
+
+## Todo:
 ### 20161118
-- [x] plotEnvironment -> Dorian
+- [x] ~~plotEnvironment -> Dorian
 - [x] firstMain, randomAgent -> Robin 
 - [ ] report, theory of simple-reflex agents -> Lars
 - [ ] theory of learning agents -> Esteban

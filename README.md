@@ -35,10 +35,10 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
 - [ ] Agent --> Eating -> Robin
 - [ ] Agent --> Survival -> Robin
 - [ ] Environment
-  - [ ] Environment --> Sugar -> Robin, Dorian
-  - [ ] ViewingRange Agent --> Esteban
-  - [ ] InitEnvironment() --> initialization of sugar i.e. max-sugar in form of hills
-- [x] PlotEnvironment --> that plots the GridInfo-> Dorian Esteban
+  - [ ] Environment --> Dorian, Robin
+  - [ ] ViewingRange of Agent --> Esteban
+  - [ ] InitEnvironment() --> initialization of sugar i.e. max-sugar in form of hills --> Dorian
+- [x] PlotEnvironment --> that plots the fieldInfo-> Dorian Esteban
 - [ ] fix stuff with sharelatex , report + presentation -> Lars
 - [ ] Theory for sugarscape -> Lars 
 

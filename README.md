@@ -1,4 +1,4 @@
-# AgentBasedZombieGame
+# Sugarscape
 **Group1**
 
 How to format this README.md

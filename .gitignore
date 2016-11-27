@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+.settings/org.eclipse.ltk.core.refactoring.prefs
+.pydevproject
+SocsSugarscape/.pydevproject
+.pydevproject
+.pydevproject
+SocsSugarscape/packageTutorial/Task1.png

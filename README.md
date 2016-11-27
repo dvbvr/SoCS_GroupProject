@@ -36,7 +36,7 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
 - [ ] Agent --> Survival -> Robin
 - [ ] Environment
   - [ ] Environment --> Sugar -> Robin, Dorian
-  - [ ] ViewingRange Agent
+  - [ ] ViewingRange Agent --> Esteban
   - [ ] InitEnvironment() --> initialization of sugar i.e. max-sugar in form of hills
 - [x] PlotEnvironment --> that plots the GridInfo-> Dorian Esteban
 - [ ] fix stuff with sharelatex , report + presentation -> Lars

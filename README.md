@@ -16,11 +16,17 @@ PlotEnvironment(fieldInfo, nAgents)
 - [x] plotEnvironment -> Dorian
 - [x] firstMain, randomAgent -> Robin 
 - [ ] report, theory of simple-reflex agents -> Lars
-- [ ] theory of learning agents -> Esteban
+- [x] theory of learning agents -> Esteban
 - [ ] Everyone should play with the code when you recieve the "start coding" SMS. This means making some agents
-  - [ ]  test
+  - [x] Robin
+  - [x] Dorian
+  - [ ] Lars
+  - [ ] Esteban  
 - [ ] [GitHub Basics](https://try.github.io/levels/1/challenges/1) -> zggGroup
-~~
+  - [x] Robin
+  - [x] Dorian
+  - [ ] Lars
+  - [x] Esteban   
 
 ### 20161125
 GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
@@ -28,11 +34,11 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
 - [ ] Agent --> The new movement -> Robin 
 - [ ] Agent --> Eating -> Robin
 - [ ] Agent --> Survival -> Robin
-- [ ] Environment --> Sugar -> Robin, Dorian
-- [ ] ViewingRange Agent
-- [ ] InitEnvironment() --> initialization of sugar i.e. max-sugar in form of hills
-
-- [ ] PlotEnvironment --> that plots the GridInfo-> Dorian Esteban
+- [ ] Environment
+  - [ ] Environment --> Sugar -> Robin, Dorian
+  - [ ] ViewingRange Agent
+  - [ ] InitEnvironment() --> initialization of sugar i.e. max-sugar in form of hills
+- [x] PlotEnvironment --> that plots the GridInfo-> Dorian Esteban
 - [ ] fix stuff with sharelatex , report + presentation -> Lars
 - [ ] Theory for sugarscape -> Lars 
 

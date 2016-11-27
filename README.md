@@ -22,7 +22,7 @@ PlotEnvironment(fieldInfo, nAgents)
   - [x] Dorian
   - [ ] Lars
   - [ ] Esteban  
-- [ ] [GitHub Basics](https://try.github.io/levels/1/challenges/1) -> zggGroup
+- [ ] [GitHub Basics](https://try.github.io/levels/1/challenges/1)
   - [x] Robin
   - [x] Dorian
   - [ ] Lars

@@ -30,15 +30,14 @@ PlotEnvironment(fieldInfo, nAgents)
 
 ### 20161125
 GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
-- [ ] new main that includes  -> Robin 
+- [x] new main that includes  -> Robin 
 - [ ] Agent --> The new movement -> Robin 
-- [ ] Agent --> Eating -> Robin
-- [ ] Agent --> Survival -> Robin
+- [x] Agent --> Eating -> Robin
+- [x] Agent --> Survival -> Robin
 - [ ] Environment
-  - [ ] Environment --> Dorian, Robin
-  - [ ] ViewingRange of Agent --> Esteban
+  - [?] Environment --> Dorian, Robin
   - [ ] InitEnvironment() --> initialization of sugar i.e. max-sugar in form of hills --> Dorian
-- [x] PlotEnvironment --> that plots the fieldInfo-> Dorian Esteban
+- [ ] PlotEnvironment --> that plots the fieldInfo-> Dorian Esteban
 - [ ] fix stuff with sharelatex , report + presentation -> Lars
 - [ ] Theory for sugarscape -> Lars 
 

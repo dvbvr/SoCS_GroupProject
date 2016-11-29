@@ -22,7 +22,7 @@ PlotEnvironment(fieldInfo, nAgents)
   - [x] Dorian
   - [ ] Lars
   - [ ] Esteban  
-- [ ] [GitHub Basics](https://try.github.io/levels/1/challenges/1) -> zggGroup
+- [ ] [GitHub Basics](https://try.github.io/levels/1/challenges/1)
   - [x] Robin
   - [x] Dorian
   - [ ] Lars
@@ -30,15 +30,14 @@ PlotEnvironment(fieldInfo, nAgents)
 
 ### 20161125
 GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
-- [ ] new main that includes  -> Robin 
+- [x] new main that includes  -> Robin 
 - [ ] Agent --> The new movement -> Robin 
-- [ ] Agent --> Eating -> Robin
-- [ ] Agent --> Survival -> Robin
+- [x] Agent --> Eating -> Robin
+- [x] Agent --> Survival -> Robin
 - [ ] Environment
-  - [ ] Environment --> Sugar -> Robin, Dorian
-  - [ ] ViewingRange Agent --> Esteban
-  - [ ] InitEnvironment() --> initialization of sugar i.e. max-sugar in form of hills
-- [x] PlotEnvironment --> that plots the GridInfo-> Dorian Esteban
+  - [?] Environment --> Dorian, Robin
+  - [ ] InitEnvironment() --> initialization of sugar i.e. max-sugar in form of hills --> Dorian
+- [ ] PlotEnvironment --> that plots the fieldInfo-> Dorian Esteban
 - [ ] fix stuff with sharelatex , report + presentation -> Lars
 - [ ] Theory for sugarscape -> Lars 
 

@@ -1,6 +1,6 @@
 import numpy as np
 from Agent import Agent
-#human  that walkes randomly does not take in to consideration any obstacles for now
+#human  that walkes randomly also eats all the sugar.
 ####################################################
 class HumanRandom(Agent):
 	def __init__(self, xPos, yPos, health):
@@ -11,14 +11,15 @@ class HumanRandom(Agent):
 	def Move(self, grid): 
         # change position 
 		oldPosition = [self.xPos, self.yPos]
-		xNew = self.xPos + np.random.random_integers(-1,1)
-		yNew = self.yPos + np.random.random_integers(-1,1)
+		newPosition = oldPosition
 		modS = np.shape(grid)[0]
-		newPosition = [xNew%modS,yNew%modS]
-		tmpReturn = [oldPosition, newPosition]
+		xNew = (self.xPos + np.random.random_integers(-1,1))%modS
+		yNew = (self.yPos + np.random.random_integers(-1,1))%modS
+		if grid[xNew][yNew][1] == 0:
+			self.xPos = xNew
+			self.yPos = yNew
+			newPosition = [xNew,yNew]
+		self.health -= 0.5
+		tmpReturn = [oldPosition, newPosition, self.health]
 		return tmpReturn
-	# 
-            
-    
-
-
+	#

@@ -54,11 +54,10 @@ class Environment:
         # For debugging        
         #print(lstAgentTypeI_X , lstAgentTypeI_Y, lstAgentHealth)        
         
-        ##################################
-        # Sugar (for the imshow() plot)
-        ##################################
-        amountOfSugarOnAllFields = np.zeros([fieldSizeWidth,fieldSizeHeight])
-        
+        ####################################################################
+        # Get the amount of sugar from fieldInfo for the imshow plot)
+        ####################################################################
+        amountOfSugarOnAllFields = np.zeros([fieldSizeWidth,fieldSizeHeight])        
         # get sugar amounts from fieldInfo
         for x in range(fieldSizeWidth):
             for y in range(fieldSizeHeight):

@@ -45,4 +45,5 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
 ### Ant Research
 
 ## Links:
-[Modelling Ants p.59-61 ](http://www.jgorasia.com/Files/Fall08/CompMod/gorasia08compmod.pdf)
+Dorian:
+- [Modelling Ants p.59-61 ](http://www.jgorasia.com/Files/Fall08/CompMod/gorasia08compmod.pdf)

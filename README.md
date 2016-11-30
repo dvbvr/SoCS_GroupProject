@@ -41,7 +41,7 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
 - [ ] fix stuff with sharelatex , report + presentation -> Lars
 - [ ] Theory for sugarscape -> Lars 
 
-### 20163011
+### 20163011 Research Ants (The third time is the charm!)
 #### Dorian
 - [x] [Ants Theory and suggestions how to programm it p.59-64](http://www.jgorasia.com/Files/Fall08/CompMod/gorasia08compmod.pdf)
 

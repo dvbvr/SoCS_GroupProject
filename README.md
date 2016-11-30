@@ -42,6 +42,7 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
 - [ ] Theory for sugarscape -> Lars 
 
 
+### Ant Research
 
-
-
+## Links:
+[Modelling Ants p.59-61 ](http://www.jgorasia.com/Files/Fall08/CompMod/gorasia08compmod.pdf)

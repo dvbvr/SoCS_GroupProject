@@ -44,6 +44,7 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
 ### 20163011
 # Dorian
 - [x] [Ants Theory and suggestions how to programm it p.59-64](http://www.jgorasia.com/Files/Fall08/CompMod/gorasia08compmod.pdf)
+
 # Esteban
 - [x] [Java browser simulation](http://ccl.northwestern.edu/netlogo/models/run.cgi?Ants.790.569) of the ant foraging system 
 - [x] [Java browser simulation](https://web.eecs.utk.edu/~mclennan/Classes/420-527-S13/NetLogo/Ant-Foraging.html) a bit more sofisticated than the one above

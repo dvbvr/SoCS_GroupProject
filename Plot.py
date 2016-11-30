@@ -71,7 +71,7 @@ class Environment_Grid(object):
                 elif radX > np.pi and radY > np.pi:
                     initialSugarAmounts[x,y] = 0
                 else:
-                    initialSugarAmounts[x,y] = sugarFrac*sugarMax
+                    initialSugarAmounts[x,y] = round(sugarFrac*sugarMax)
                 
                 
         

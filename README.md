@@ -57,6 +57,7 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
           Two different states: looking for food, looking for the nest
           As they move they follow the trail they need depending on current state, while leaving a trail of the other type of pheromone.
           Depending on the pheromone levels, the ants preferably move to the front positions, if not to the other 5 positions, if not stays quiet.
+          
 #### To do
 - Read the article {1} and {2} see above.
 - Lars: make report based on articles, and with the presentation if you have time

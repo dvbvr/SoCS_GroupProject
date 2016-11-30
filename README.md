@@ -49,6 +49,14 @@ GridInfo[x,y] = [AgentType,AgentHealth,SugarAmount]
 - [x] [Java browser simulation](http://ccl.northwestern.edu/netlogo/models/run.cgi?Ants.790.569) of the ant foraging system 
 - [x] [Java browser simulation](https://web.eecs.utk.edu/~mclennan/Classes/420-527-S13/NetLogo/Ant-Foraging.html) a bit more sofisticated than the one above
 - [x] Article:[Ant Foraging Revisited](http://cs.gmu.edu/~eclab/papers/panait04ant.pdf) Contains a pseudo-code
+      Method:
+      - Pheromones: 
+        Two types: one to locate the food, other to locate the nest. 
+        These pheromones evaporate, diffuse and can coexist in one spot.
+      - Ants
+        Two different states: looking for food, looking for the nest
+        As they move they follow the trail they need depending on current state, while leaving a trail of the other type of pheromone.
+        Depending on the pheromone levels, the ants preferably move to the front positions, if not to the other 5 positions, if not stays quiet.
 
 
 

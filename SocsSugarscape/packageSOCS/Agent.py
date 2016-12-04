@@ -7,7 +7,6 @@ class Agent:
 		self.xPos = xPos
 		self.yPos = yPos
 		self.health = health
-		self.stateOfBeing = 0 #0 for human 1 for zombie
 	#
 	
 	def Move(self, grid):

@@ -20,17 +20,14 @@ class HumanRandom(Agent):
 		if (self.state == 0):
 			grid[self.xPos][self.yPos][1] += 1
 			noSugar = True
-			for i in self.dirList:
+			for i in range(len(self.dirList)):
 				[x,y] = currPos + self.dirList[i]
 				print ([x,y])
 				#checks for sugar and go there
-				# WARNING!!
-				# this next line doesn't work!!! but the rest should be ok...
-				if grid[x,y][2] != 0:
+				if grid[x,y,2] is not 0:
 					self.xPos = x
 					self.yPos = y
 					noSugar = False
-					#[x,y] = sugar position			
 			if noSugar:
 				for i in range(5):
 					[x,y] = currPos + dirList[(self.direction+i-2)%8]

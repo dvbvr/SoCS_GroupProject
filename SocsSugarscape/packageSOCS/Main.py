@@ -2,7 +2,7 @@ import numpy as np
 import array as ar
 import time
 from HumanRandom import HumanRandom
-#from PlotEnvironment import Plot
+import Plot
 import matplotlib.pyplot as plt
 
 nbrHuman = 0
@@ -86,5 +86,5 @@ print(gridInfo)
 	#===========================================================================
 	#with diffusion like behaviour 
 	
-	#Plot.AllFields(Plot ,plotInfo , 5 , 5) 
+Plot.Environment.Grid(plotInfo , fieldSize,0.05) 
 	#The above line does not work, the same goes for the import at row 5

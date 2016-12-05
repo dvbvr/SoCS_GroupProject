@@ -8,40 +8,36 @@ import matplotlib.pyplot as plt
 import Plot
 import InitializationMethods
 
-##################################
+#===============================================================================
 # Initialize terrain
-##################################
-fieldSizeWidth = 10
-fieldSizeHeight = 10
-
-terrain = InitializationMethods.Initialize.Fields(fieldSizeWidth,fieldSizeHeight)
+#===============================================================================
+fieldSize = 10
+terrain = InitializationMethods.Initialize.Fields(fieldSize)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-##################################
+#===============================================================================
 # Add some sugar and agents for testing purpose
-##################################         
-# terrain[X][Y] = # [0 = NoAgent 1 = Agent,     AgentSate 0:foraging 1:ReturningHome,     foodAmount]
-
-
-# IsThereAnAgent
-terrain[4][2][0] = 0 #No       
-terrain[4][4][0] = 1 #Yes  
+#===============================================================================
+# STATE
+terrain[4][2][0] = 0 #Foraging       
+terrain[4][4][0] = 1 #ReturningHome
 terrain[4][3][0] = 1   
-# state
-terrain[4][2][1] = 0       
-terrain[4][4][1] = 0   
-terrain[4][3][1] = 1   
+# HEALTH
+terrain[4][2][1] = 12       
+terrain[4][4][1] = 2   
+terrain[4][3][1] = 4   
 # foodAmount
-terrain[4][2][2] = 5       
-terrain[4][4][2] = 10       
-terrain[4][3][2] = 6   
+terrain[4][2][2] = 2       
+terrain[4][4][2] = 1       
+terrain[4][5][2] = 21   
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-##################################
-# Initialize terrain
-##################################
+#===============================================================================
+# # Initialize terrain
+#===============================================================================
 PlotDelay = 0.005
-
 for i in range(5):
-    Plot.Environment.Grid(np.copy(terrain), fieldSizeWidth, fieldSizeHeight, PlotDelay)
-
+    Plot.Environment.Grid(np.copy(terrain), fieldSize, PlotDelay)
 plt.show()
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+

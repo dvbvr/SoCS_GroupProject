@@ -6,7 +6,6 @@ Created on 21.11.2016
 
 import numpy as np
 import matplotlib.pyplot as plt
-import Agents as ag
 from matplotlib import gridspec
 from IPython.core.pylabtools import figsize
 
@@ -17,76 +16,93 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable, axes_size
 
 class Environment:
     
-    def Grid(fieldInfo, fieldSizeWidth, fieldSizeHeight, PlotDelay):    
+    def Grid(terrainInfo, fieldSizeWidth, fieldSizeHeight, PlotDelay):    
                                    
-        ##################################
-        # Get Information from fieldInfo 
-        # So that it can be added to the scatterplot
-        ##################################
-        
-        # AgentTypeI position and health
-        lstAgentTypeI_X = []
-        lstAgentTypeI_Y = []
-        lstAgentHealth = []
-        # AgentTypeII position and health
-        lstAgentTypeII_X = []
-        lstAgentTypeII_Y = []
-        lstAgentHealthII = []
+
+        # terrainInfo[nestPheromone, foodPheromone, food]
+        # [0 = NoAgent 1 = Agent,     AgentSate 0:foraging 1:ReturningHome,     foodAmount]
+                
+        # Plot agent state:
+        # [AgentState, food]
+
+        # AgentForaging position and state        
+        npaAgentForagingPosX = np.array([])
+        npaAgentForagingPosY = np.array([])
+        npaAgentState = np.array([])
+
+        # AgentForaging position and state        
+        npaAgentRetHomePosX = np.array([])
+        npaAgentRetHomePosY = np.array([])
+        npaAgentState = np.array([])
+                
         # Sugar position and amount
-        lstSugarAmount_X = []
-        lstSugarAmount_Y =[]
+        npaFoodAmount_X = np.array([])
+        npaFoodAmount_Y = np.array([])
+        npaFoodAmount = np.array([])
+
+
+        ##################################
+        # Get Information from terrainInfo,
+        # so that it can be added to the scatterplot.
+        # AgentState, foodAmount
+        ##################################
+        for y in range(fieldSizeWidth):
+            for x in range(fieldSizeWidth):
+                # if Agent is 0, --> no agent at this position
+                if terrainInfo[y,x,0] >= 1: 
+                    if terrainInfo[y,x,1] == 0: #foraging 
+                        npaAgentForagingPosX = np.append(npaAgentForagingPosX, np.array([x]))
+                        npaAgentForagingPosY = np.append(npaAgentForagingPosY, np.array([y]))
+                        npaAgentState = np.append(npaAgentState, terrainInfo[x,y,1])
+                    #
+                    if terrainInfo[y,x,1] == 1: 
+                        npaAgentRetHomePosX = np.append(npaAgentRetHomePosX, np.array([x]))
+                        npaAgentRetHomePosY = np.append(npaAgentRetHomePosY, np.array([y]))
+                        npaAgentState = np.append(npaAgentState, terrainInfo[x,y,1])
+                    #
+                #
+            #
+        #
         
-        for index, x in np.ndenumerate(fieldInfo):
-            # if health is bigger than 0, --> ignore dead agents
-            if x[1] is not 0:
-                # recognize different agent types 
-                if x[0] is 0:
-                    lstAgentTypeI_X.append(index[0])
-                    lstAgentTypeI_Y.append(index[1])
-                    lstAgentHealth.append(x[1])
-                if x[0] is 1:
-                    lstAgentTypeII_X.append(index[0])
-                    lstAgentTypeII_Y.append(index[1])
-                    lstAgentHealthII.append(x[1])
-            if x[2] is not 0:
-                lstSugarAmount_X.append(index[0])
-                lstSugarAmount_Y.append(index[1])                   
-        # For debugging        
-        #print(lstAgentTypeI_X , lstAgentTypeI_Y, lstAgentHealth)        
+        
         
         ####################################################################
-        # Get the amount of sugar from fieldInfo for the imshow plot)
+        # Get the amount of sugar from terrainInfo for the imshow plot)
         ####################################################################
-        amountOfSugarOnAllFields = np.zeros([fieldSizeWidth,fieldSizeHeight])        
-        # get sugar amounts from fieldInfo
-        for x in range(fieldSizeWidth):
-            for y in range(fieldSizeHeight):
-                amountOfSugarOnAllFields[x,y]=fieldInfo[x][y][2]
-        #print(amountOfSugarOnAllFields)
+        npaFoodAmount = np.zeros([fieldSizeWidth,fieldSizeHeight])        
+        # get sugar amounts from terrainInfo
+        for y in range(fieldSizeWidth):
+            for x in range(fieldSizeHeight):
+                npaFoodAmount[x,y]=terrainInfo[x][y][2]
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
         
         
         ##################################
         # Define the COLORMAPS for the plots
         ##################################
         # sugar
-        vmax=3
-        cmapSugar = LinearSegmentedColormap.from_list('mycmap', [(0 / vmax, 'white'),
-                                                            (1 / vmax, 'yellow'),
-                                                            (3 / vmax, 'orange')])
-        # Health
-        cmapHealth = plt.cm.get_cmap('cool')
+        #=======================================================================
+        # vmax=3
+        # cmapSugar = LinearSegmentedColormap.from_list('mycmap', [(0 / vmax, 'white'),
+        #                                                     (1 / vmax, 'yellow'),
+        #                                                     (3 / vmax, 'orange')])
+        # # Health
+        # cmapHealth = plt.cm.get_cmap('cool')
+        #=======================================================================
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       
 
+        
         
         ##################################
         # The Figure
         ##################################
+        figname='terrain'
         figsizeX =18
         figSizeY = 9                
-        figsize=(figsizeX,figSizeY)          # <--
-        figname='Sugarscape'
+        figsize=(figsizeX,figSizeY)
         mainFigure = plt.figure(figname,figsize)
+
         plt.ion()        
         plt.clf()
         plt.draw()
@@ -100,45 +116,53 @@ class Environment:
         ax.set_xlim(-0.5, fieldSizeWidth+0.5-1)
         ax.set_ylim(-0.5, fieldSizeHeight+0.5-1)        
                                 
-        # Scatterplott the Agents Type I
-        fAgentTypeI = ax.scatter(lstAgentTypeI_X, lstAgentTypeI_Y,                        
-                        s=100, #/figSizeY, #s=lstAgentHealth,
-                        c=lstAgentHealth, #color='blue',
-                        vmin=0, vmax=10,
+        # Scatterplott the AgentForaging
+        fAgentTypeI = ax.scatter(
+                        npaAgentForagingPosY, npaAgentForagingPosX,                      
+                        s=80, 
+                        #c=npaAgentState,
+                        #vmin=0, vmax=10,
                         marker = 's',
                         edgecolor='black', 
-                        cmap=cmapHealth,
-                        label='Agent TypeI')
+                        #cmap=cmapHealth,
+                        label='Agent foraging')
+
+        # Scatterplott the AgentRetHome
+        #=======================================================================
+        # fAgentTypeII = ax.scatter(
+        #                 npaAgentRetHomePosY, npaAgentRetHomePosX,                      
+        #                 s=80, 
+        #                 #c=npaAgentState,
+        #                 #vmin=0, vmax=10,
+        #                 marker = 's',
+        #                 edgecolor='black', 
+        #                 #cmap=cmapHealth,
+        #                 label='Agent returning to the nest')
+        #=======================================================================
         
-        # Scatterplott the Agents Type II        
-        fAgentTypeII = ax.scatter(lstAgentTypeII_X, lstAgentTypeII_Y,                        
-                        s=100, #/figSizeY, #s=lstAgentHealthII,
-                        c=lstAgentHealthII, #color='blue',
-                        vmin=0, vmax=10,
-                        edgecolor='black', 
-                        cmap=cmapHealth,
-                        label='Agent TypeII')
-        
-        # The position of the scatterplot legend of the agents
-        ax.legend(scatterpoints=1, bbox_to_anchor=(0,0,-0.05, 1))#loc='lower right')#, bbox_to_anchor=(0,0,-0.05, 1))
-        legend = ax.get_legend()
-        legend.legendHandles[0].set_color('black')#plt.cm.Blues(.8))
-        legend.legendHandles[1].set_color('black')#plt.cm.Greens(.8))
-        
-        # Adding the colorbar for health
-        cbarHealth = mainFigure.colorbar(fAgentTypeI, shrink = 0.5) #orientation='horizontal')
-        cbarHealth.set_label('Health of Agent')
+        #=======================================================================
+        # # The position of the scatterplot legend of the agents
+        # ax.legend(scatterpoints=1, bbox_to_anchor=(0,0,-0.05, 1))
+        # legend = ax.get_legend()
+        # legend.legendHandles[0].set_color('black')
+        # #legend.legendHandles[1].set_color('black')
+        # 
+        # # Adding the colorbar agent state
+        # cbarHealth = mainFigure.colorbar(fAgentTypeI, shrink = 0.5)
+        # cbarHealth.set_label('Sate of Agent')
+        #=======================================================================
         
         # plot the sugar as squares in a raster         
-        fSugar = ax.imshow(amountOfSugarOnAllFields, 
+        fSugar = ax.imshow(
+                        npaFoodAmount, 
                         interpolation='none', 
-                        cmap=cmapSugar,
+                        #cmap=cmapSugar,
                         vmin=0,
                         vmax=10)
         
         # Adding the colorbar
-        cbarAmountSugar = mainFigure.colorbar(fSugar, shrink= 0.5) #fraction=0.046, pad=0.04,#orientation='horizontal')
-        cbarAmountSugar.set_label('Amount of sugar') #, rotation=270)
+        cbarAmountSugar = mainFigure.colorbar(fSugar, shrink= 0.5) 
+        cbarAmountSugar.set_label('Amount of food')
         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
         plt.draw()

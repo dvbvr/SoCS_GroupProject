@@ -14,18 +14,18 @@ class Agent:
 		oldPosition = [self.xPos, self.yPos]
 		newPosition = []
 		tmpReturn = [oldPosition, newPosition]
+        #dropPheromones = [self.xPos, self.yPos] depending on state
 		return tmpReturn
 	#    
-
-	def ChangeHealth(self, amountHealthAlteration):
-		self.health = self.health + amountHealthAlteration
-		return self.health
-	#
         
 	def GetState(self):
 		state = self.stateOfBeing
 		return state
 	#
+    
+    def GetHealth(self):
+        return self.health
+    #
 	
             
     

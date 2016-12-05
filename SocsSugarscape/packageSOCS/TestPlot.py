@@ -9,44 +9,39 @@ import Plot
 import InitializationMethods
 
 ##################################
-# Initialize fieldInfo
+# Initialize terrain
 ##################################
-fieldSizeWidth = 16
-fieldSizeHeight = 16 
+fieldSizeWidth = 10
+fieldSizeHeight = 10
 
-fieldInfo = InitializationMethods.Initialize.Fields(fieldSizeWidth,fieldSizeHeight)
-
+terrain = InitializationMethods.Initialize.Fields(fieldSizeWidth,fieldSizeHeight)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ##################################
 # Add some sugar and agents for testing purpose
 ##################################         
+# terrain[X][Y] = # [0 = NoAgent 1 = Agent,     AgentSate 0:foraging 1:ReturningHome,     foodAmount]
 
-# fieldInfo[X][Y] = [AgentType ^= 0, Health^=1, SugarAmount^=2]
 
-# sugar
-fieldInfo[0][0][2] = 10       
-fieldInfo[0][1][2] = 10       
-fieldInfo[1][0][2] = 10       
-fieldInfo[1][0][2] = 8       
-fieldInfo[2][4][2] = 2       
-
-# type
-fieldInfo[4][2][0] = 0       
-fieldInfo[4][4][0] = 0   
-fieldInfo[4][3][0] = 1   
-
-# health
-fieldInfo[4][2][1] = 2       
-fieldInfo[4][4][1] = 10       
-fieldInfo[4][3][1] = 6   
+# IsThereAnAgent
+terrain[4][2][0] = 0 #No       
+terrain[4][4][0] = 1 #Yes  
+terrain[4][3][0] = 1   
+# state
+terrain[4][2][1] = 0       
+terrain[4][4][1] = 0   
+terrain[4][3][1] = 1   
+# foodAmount
+terrain[4][2][2] = 5       
+terrain[4][4][2] = 10       
+terrain[4][3][2] = 6   
 
 ##################################
-# Initialize fieldInfo
+# Initialize terrain
 ##################################
 PlotDelay = 0.005
 
-
 for i in range(5):
-    Plot.Environment.Grid(fieldInfo,fieldSizeWidth, fieldSizeHeight, PlotDelay)
+    Plot.Environment.Grid(np.copy(terrain), fieldSizeWidth, fieldSizeHeight, PlotDelay)
 
 plt.show()

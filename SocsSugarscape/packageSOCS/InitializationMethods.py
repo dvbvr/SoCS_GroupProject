@@ -9,14 +9,16 @@ import numpy as np
       
 class Initialize:        
     
-    def Fields(fieldSizeWidth, fieldSizeHeight):
+    def Fields(width, height):
+        # m=row
+        #n=column
         
-        fieldInfo = np.zeros((fieldSizeHeight, fieldSizeWidth), dtype=object)
+        terrainInfo = np.zeros((height, width,3))
         
-        for y in range(fieldSizeHeight):
-            for x in range(fieldSizeWidth):
-                fieldInfo[y][x] = [0,0,0] # [AgentType, Health, SugarAmount]
+        for m in range(height):
+            for n in range(width):
+                terrainInfo[m][n] = [0,0,0] # [0 = NoAgent 1 = Agent, AgentSate 0:foraging 1:ReturningHome, foodAmount]
             #    
         #
-        return fieldInfo
+        return terrainInfo #np.array
     #

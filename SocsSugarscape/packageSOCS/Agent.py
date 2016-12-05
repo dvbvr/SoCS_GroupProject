@@ -12,20 +12,18 @@ class Agent:
 	def Move(self, grid):
         # change position
 		oldPosition = [self.xPos, self.yPos]
-		newPosition = []
-		tmpReturn = [oldPosition, newPosition]
+		newPosition = [5,5]
+		tmpReturn = [oldPosition, newPosition,5]
         #dropPheromones = [self.xPos, self.yPos] depending on state
 		return tmpReturn
 	#    
-        
-	def GetState(self):
-		state = self.stateOfBeing
-		return state
-	#
-    
-    def GetHealth(self):
-        return self.health
+
+	def GetHealth(self):
+		return self.health
     #
+    
+	def GetPos(self):
+		return [self.xPos,self.yPos]
 	
             
     

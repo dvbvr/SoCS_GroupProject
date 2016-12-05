@@ -13,48 +13,51 @@ class HumanRandom(Agent):
 	def Move(self, grid):
 		oldPosition = [self.xPos,self.yPos]
 		modS = np.shape(grid)[0]
-		pheroParameter = 0.01
+		pheroParameter = 10
 		currPos = np.array([self.xPos, self.yPos])
 		weights = np.array([5,10,20,10,5])
 		# if see sugar go there
 		if (self.state == 0):
 			grid[self.xPos][self.yPos][1] += 1
 			noSugar = True
-			for i in range(len(self.dirList)):
+			for i in range(8):
 				[x,y] = currPos + self.dirList[i]
-				print ([x,y])
 				#checks for sugar and go there
-				if grid[x,y,2] is not 0:
-					self.xPos = x
-					self.yPos = y
+				# WARNING!!
+				# this next line doesn't work!!! but the rest should be ok...
+				if grid[x%modS][y%modS][2] > 0:
+					self.xPos = x%modS
+					self.yPos = y%modS
 					noSugar = False
+					#[x,y] = sugar position			
 			if noSugar:
 				for i in range(5):
-					[x,y] = currPos + dirList[(self.direction+i-2)%8]
+					[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
 					weights[i] += grid[x%modS][y%modS][0]*pheroParameter
 				totWeight = np.sum(weights)	
 				picked = np.random.random_integers(0,totWeight-1)
 				for i in range(5):
 					if picked < weights[i]:
-						[x,y] = currPos + dirList[(self.direction+i-2)%8]
-						self.xPos = x
-						self.yPos = y
+						[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
+						self.xPos = x%modS
+						self.yPos = y%modS
 						break
 					else:
 						picked -= weights[i]			
 				#look for food pheromones
 		else:
+			grid[self.xPos][self.yPos][0] += 1
 			for i in range(5):
-				[x,y] = currPos + dirList[(self.direction+i-2)%8]
+				[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
 				weights[i] += grid[x%modS][y%modS][1]*pheroParameter
 			totWeight = np.sum(weights)	
 			picked = np.random.random_integers(0,totWeight-1)
 			for i in range(5):
 				if picked < weights[i]:
-					[x,y] = currPos + dirList[(self.direction+i-2)%8]
+					[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
 					grid[self.xPos][self.yPos][0] += 1
-					self.xPos = x
-					self.yPos = y
+					self.xPos = x%modS
+					self.yPos = y%modS
 					break
 				else:
 					picked -= weights[i]
@@ -69,6 +72,8 @@ class HumanRandom(Agent):
 	#
 	def ChangeState(self, state):
 		self.state = state
+		self.direction = (self.direction+4)%8
+		#self.health += 100
 	#
 	        
 	def GetState(self):

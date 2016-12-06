@@ -5,14 +5,15 @@ Created on 27.11.2016
 '''
 import numpy as np
 import matplotlib.pyplot as plt
-import Plot
-import InitializationMethods
+from SocsSugarscape.packageSOCS.Plot import Environment
+from SocsSugarscape.packageSOCS.InitializationMethods import Initialize
 
 #===============================================================================
 # Initialize terrain
 #===============================================================================
 fieldSize = 10
-terrain = InitializationMethods.Initialize.Fields(fieldSize)
+terrain = Initialize.Fields(fieldSize)
+PlotDelay = 0.005
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #===============================================================================
@@ -37,7 +38,7 @@ terrain[4][5][2] = 21
 #===============================================================================
 PlotDelay = 0.005
 for i in range(5):
-    Plot.Environment.Grid(np.copy(terrain), fieldSize, PlotDelay)
+    Environment.Grid(np.copy(terrain), fieldSize, PlotDelay)
 plt.show()
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

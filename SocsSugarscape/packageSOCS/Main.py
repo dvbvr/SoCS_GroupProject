@@ -1,12 +1,21 @@
+#===============================================================================
+# External Libraries
+#===============================================================================
 import numpy as np
-import array as ar
-import time
-from HumanRandom import HumanRandom
-#from PlotEnvironment import Plot
 import matplotlib.pyplot as plt
-import Plot
-import InitializationMethods
 
+
+#===============================================================================
+# Import of our Libraries
+#===============================================================================
+from SocsSugarscape.packageSOCS.HumanRandom import HumanRandom
+from SocsSugarscape.packageSOCS.Plot import Environment
+from SocsSugarscape.packageSOCS.InitializationMethods import Initialize
+
+
+#===============================================================================
+# Declare variables
+#===============================================================================
 nbrHuman = 0
 fieldSize = 50
 Agents = []
@@ -14,10 +23,11 @@ lifeTime = 100
 HOME = 1
 FOOD = 0
 nestPosition = fieldSize//2  #general nest position
-
 maxSugar = 100
 carreiSize= 1
 collectedSugar = 0
+PlotDelay = 0.0005
+
 #===============================================================================
 # GRID RESOURCES --> ANTS
 #===============================================================================
@@ -29,6 +39,8 @@ for i in range(fieldSize):
 for i in range(nestPosition-1,nestPosition+2):
 	for j in range(nestPosition-1,nestPosition+2):
 		gridInfo[i][j][2] = -1
+	#	
+		
 #===========================================================================
 # PLOT INFO 
 #===========================================================================
@@ -73,6 +85,7 @@ for it in range(200000):
 				collectedSugar += 1
 			#
 		i += 1
+		#
 	#
 	for i in range(nbrHuman):
 		[x,y] = Agents[i].GetPos()
@@ -113,14 +126,6 @@ for it in range(200000):
 	plotW8 = 10 # how often to plot, e.i once every "plotW8" iterations
 	if it%plotW8 == 5:
 		print(collectedSugar/(it+1),'FoodCollected average')
-		PlotDelay = 0.0005
-		Plot.Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay)
-#Plot.Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay)
-#plt.show()
-	#===========================================================================
-	#FIX Adding new Sugar?
-	#===========================================================================
-	#with diffusion like behaviour 
-	
-	#Plot.AllFields(Plot ,plotInfo , 5 , 5) 
-	#The above line does not work, the same goes for the import at row 5
+		Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay)
+
+plt.show()

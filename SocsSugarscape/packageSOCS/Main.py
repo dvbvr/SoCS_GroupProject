@@ -126,6 +126,6 @@ for it in range(200000):
 	plotW8 = 10 # how often to plot, e.i once every "plotW8" iterations
 	if it%plotW8 == 5:
 		print(collectedSugar/(it+1),'FoodCollected average')
-		Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay)
+		Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay, nestPosition)
 
 plt.show()

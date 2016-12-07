@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 class Environment:
 
-	def Grid(terrainInfo, fieldSize, PlotDelay):    
+	def Grid(terrainInfo, fieldSize, PlotDelay, nestPosition=None):    
 		AGENTSTATE = 0
 		AGENTHEALTH = 1
 		SUGARAMOUNT = 2
@@ -33,7 +33,7 @@ class Environment:
 		npaAgentRetHomePosX = np.array([])
 		npaAgentRetHomePosY = np.array([])
 		npaAgentStateRet = np.array([])
-		paAgentHealthRetHome = np.array([])
+		npaAgentHealthRetHome = np.array([])
 
 		# Sugar position and amount
 		npaFoodAmount_X = np.array([])
@@ -55,11 +55,14 @@ class Environment:
 						npaAgentForagingPosX = np.append(npaAgentForagingPosX, np.array([x]))
 						npaAgentForagingPosY = np.append(npaAgentForagingPosY, np.array([y]))
 						npaAgentStateFor = np.append(npaAgentStateFor, terrainInfo[x,y,AGENTSTATE])
+						paAgentHealthFor = np.append(paAgentHealthFor, terrainInfo[y,x,AGENTHEALTH])
+						
 					# Recognise the retruning agent
 					if terrainInfo[y,x,AGENTSTATE] == 1: 
 						npaAgentRetHomePosX = np.append(npaAgentRetHomePosX, np.array([x]))
 						npaAgentRetHomePosY = np.append(npaAgentRetHomePosY, np.array([y]))
 						npaAgentStateRet = np.append(npaAgentStateRet, terrainInfo[x,y,AGENTSTATE])
+						npaAgentHealthRetHome = np.append(npaAgentHealthRetHome, terrainInfo[y,x,AGENTHEALTH])
 					#
 				#
 			#
@@ -118,8 +121,8 @@ class Environment:
 		fAgentTypeII = ax.scatter(
 		                npaAgentRetHomePosY, npaAgentRetHomePosX,                      
 		                s=80, 
-		                c=npaAgentStateRet,
-		                #vmin=0, vmax=10,
+		                c=npaAgentStateRet, #npaAgentStateRet,
+		                #vmin=0, vmax=10, # --> for min and max 
 		                marker = 'o',
 		                edgecolor='black', 
 		                cmap=cmapHealth,

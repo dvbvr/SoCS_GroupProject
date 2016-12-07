@@ -1,33 +1,23 @@
-#===============================================================================
-# External Libraries
-#===============================================================================
 import numpy as np
+import array as ar
+import time
+from HumanRandom import HumanRandom
+#from PlotEnvironment import Plot
 import matplotlib.pyplot as plt
+import Plot
+import InitializationMethods
 
-
-#===============================================================================
-# Import of our Libraries
-#===============================================================================
-from SocsSugarscape.packageSOCS.HumanRandom import HumanRandom
-from SocsSugarscape.packageSOCS.Plot import Environment
-from SocsSugarscape.packageSOCS.InitializationMethods import Initialize
-
-
-#===============================================================================
-# Declare variables
-#===============================================================================
 nbrHuman = 0
-fieldSize = 50
+fieldSize = 60
 Agents = []
-lifeTime = 100
+lifeTime = 200
 HOME = 1
 FOOD = 0
 nestPosition = fieldSize//2  #general nest position
+
 maxSugar = 100
 carreiSize= 1
 collectedSugar = 0
-PlotDelay = 0.0005
-
 #===============================================================================
 # GRID RESOURCES --> ANTS
 #===============================================================================
@@ -39,8 +29,6 @@ for i in range(fieldSize):
 for i in range(nestPosition-1,nestPosition+2):
 	for j in range(nestPosition-1,nestPosition+2):
 		gridInfo[i][j][2] = -1
-	#	
-		
 #===========================================================================
 # PLOT INFO 
 #===========================================================================
@@ -57,10 +45,11 @@ for it in range(200000):
 	plotInfo[5][5][2] = 1000
 	#spawn new ant from nest
 	#if spawn:
-	xPos = np.random.random_integers(nestPosition-1,nestPosition+1)
-	yPos = np.random.random_integers(nestPosition-1,nestPosition+1)
-	Agents.append(HumanRandom(xPos, yPos, lifeTime))
-	nbrHuman += 1
+	if(it%5 == 1):
+		xPos = np.random.random_integers(nestPosition-1,nestPosition+1)
+		yPos = np.random.random_integers(nestPosition-1,nestPosition+1)
+		Agents.append(HumanRandom(xPos, yPos, lifeTime))
+		nbrHuman += 1
 	#spawn = True
 	#moves all agents once
 	i = 0
@@ -85,7 +74,6 @@ for it in range(200000):
 				collectedSugar += 1
 			#
 		i += 1
-		#
 	#
 	for i in range(nbrHuman):
 		[x,y] = Agents[i].GetPos()
@@ -115,7 +103,7 @@ for it in range(200000):
 			diffGrid[(i-1)%fieldSize][(j-1)%fieldSize][1] += gridInfo[i][j][1]*diffRate*10
 			
 			
-			gridInfo[i][j][0] -= gridInfo[i][j][0]*0.001
+			gridInfo[i][j][0] -= gridInfo[i][j][0]*0.01
 			gridInfo[i][j][1] -= gridInfo[i][j][1]*0.01
 			if (gridInfo[i][j][2] > 0):
 				gridInfo[i][j][2] -= 1
@@ -126,6 +114,13 @@ for it in range(200000):
 	plotW8 = 10 # how often to plot, e.i once every "plotW8" iterations
 	if it%plotW8 == 5:
 		print(collectedSugar/(it+1),'FoodCollected average')
-		Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay, nestPosition)
-
-plt.show()
+		PlotDelay = 0.0005
+		Plot.Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay)
+		#plot(gridInfo,fieldSize, PlotDelay)
+	#===========================================================================
+	#FIX Adding new Sugar?
+	#===========================================================================
+	#with diffusion like behaviour 
+	
+	#Plot.AllFields(Plot ,plotInfo , 5 , 5) 
+	#The above line does not work, the same goes for the import at row 5

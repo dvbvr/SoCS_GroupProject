@@ -5,6 +5,7 @@ from Agent import Agent
 class HumanRandom(Agent):
 	def __init__(self, xPos, yPos, health):
 		super().__init__(xPos, yPos, health)
+		self.maxHealth = health
 		self.state = 0
 		self.dirList = np.array([[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1]])
 		self.direction = np.random.random_integers(0,7) #should be random
@@ -41,12 +42,13 @@ class HumanRandom(Agent):
 						[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
 						self.xPos = x%modS
 						self.yPos = y%modS
+						self.direction = self.direction+i-2
 						break
 					else:
 						picked -= weights[i]			
 				#look for food pheromones
 		else:
-			grid[self.xPos][self.yPos][0] += 1
+			grid[self.xPos][self.yPos][0] += 2/self.maxHealth*self.health
 			for i in range(5):
 				[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
 				weights[i] += grid[x%modS][y%modS][1]*pheroParameter
@@ -58,6 +60,7 @@ class HumanRandom(Agent):
 					grid[self.xPos][self.yPos][0] += 1
 					self.xPos = x%modS
 					self.yPos = y%modS
+					self.direction = self.direction+i-2
 					break
 				else:
 					picked -= weights[i]

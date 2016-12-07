@@ -4,8 +4,8 @@ import time
 from HumanRandom import HumanRandom
 #from PlotEnvironment import Plot
 import matplotlib.pyplot as plt
-import Plot
-import InitializationMethods
+from SocsSugarscape.packageSOCS.Plot import Environment
+#from SocsSugarscape.packageSOCS.InitializationMethods import Initialize
 
 nbrHuman = 0
 fieldSize = 60
@@ -115,11 +115,12 @@ for it in range(200000):
 	if it%plotW8 == 5:
 		print(collectedSugar/(it+1),'FoodCollected average')
 		PlotDelay = 0.0005
-		Plot.Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay)
-		#plot(gridInfo,fieldSize, PlotDelay)
+		Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay)
+		Environment.PheromoneGrid(np.copy(gridInfo),fieldSize, PlotDelay)
 	#===========================================================================
 	#FIX Adding new Sugar?
 	#===========================================================================
+
 	#with diffusion like behaviour 
 	
 	#Plot.AllFields(Plot ,plotInfo , 5 , 5) 

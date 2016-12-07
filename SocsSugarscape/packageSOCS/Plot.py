@@ -153,3 +153,87 @@ class Environment:
 		plt.pause(PlotDelay)
 		plt.ioff()  
 	#
+
+
+	def PheromoneGrid(terrainInfo, fieldSize, PlotDelay, nestPosition=None):    
+		PHEROMONE_HOME = 1
+		PHEROMONE_FOOD = 0
+		#[Pheromone1, Pheromone2, sugarAmount]
+		
+		# get sugar amounts from terrainInfo
+		npaPHEROMONE_FOOD = np.zeros([fieldSize,fieldSize])        
+		for y in range(fieldSize):
+			for x in range(fieldSize):
+				npaPHEROMONE_FOOD[x,y]=terrainInfo[y][x][PHEROMONE_FOOD]
+			#
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		# get sugar amounts from terrainInfo
+		npaPHEROMONE_HOME = np.zeros([fieldSize,fieldSize])        
+		for y in range(fieldSize):
+			for x in range(fieldSize):
+				npaPHEROMONE_HOME[x,y]=terrainInfo[y][x][PHEROMONE_HOME]
+			#
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		
+		#=======================================================================
+		# Define the COLORMAPS for the plots
+		#=======================================================================
+		#		
+		cmapFood = plt.cm.get_cmap('YlOrRd')#('Blues')#('YlOrRd')
+		cmapHome = plt.cm.get_cmap('YlGn')#('Blues')#('YlOrRd')
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       
+
+		#=======================================================================
+		# The Figure
+		#======================================================================= 
+
+
+		plt.ion()        
+		plt.clf()
+		plt.draw()
+		figname='Pheromonetypes'
+		figsizeX =18
+		figSizeY = 9                
+		figsize=(figsizeX,figSizeY)
+		mainFigure = plt.figure(figname,figsize)
+
+		plt.ion()        
+		plt.clf()
+		plt.draw()
+				
+		ax1 = mainFigure.add_subplot(121)        
+		ax2 = mainFigure.add_subplot(122)
+		#ax1.set_aspect('auto')
+		ax1.set_title("Pherome Home",fontsize=14)
+		ax1.set_xlabel("x",fontsize=12)
+		ax1.set_ylabel("y",fontsize=12)
+		ax1.grid(True,linestyle='-',color='0.75')
+		ax1.set_xlim(-0.5, fieldSize+0.5-1)
+		ax1.set_ylim(-0.5, fieldSize+0.5-1)   
+		# plot the sugar as squares in a raster         
+		fHome = ax1.imshow(
+                        npaPHEROMONE_HOME, 
+                        interpolation='none', 
+                        cmap=cmapHome)
+		#		
+
+		ax2.set_title("Pheromone Food",fontsize=14)
+		ax2.set_xlabel("x",fontsize=12)
+		ax2.set_ylabel("y",fontsize=12)
+		ax2.grid(True,linestyle='-',color='0.75')
+		ax2.set_xlim(-0.5, fieldSize+0.5-1)
+		ax2.set_ylim(-0.5, fieldSize+0.5-1)   
+		# plot the sugar as squares in a raster         
+		fFood = ax2.imshow(
+                        npaPHEROMONE_FOOD, 
+                        interpolation='none', 
+                        cmap=cmapFood)
+		#       
+
+		plt.draw()
+		plt.pause(PlotDelay)
+		plt.ioff()  
+	#
+

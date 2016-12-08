@@ -4,11 +4,11 @@ import time
 from HumanRandom import HumanRandom
 #from PlotEnvironment import Plot
 import matplotlib.pyplot as plt
-from SocsSugarscape.packageSOCS.Plot import Environment
+from Plot import Environment
 #from SocsSugarscape.packageSOCS.InitializationMethods import Initialize
 
 nbrHuman = 0
-fieldSize = 60
+fieldSize = 40
 Agents = []
 lifeTime = 200
 HOME = 1
@@ -26,8 +26,8 @@ for i in range(fieldSize):
 	for j in range(fieldSize):
 		gridInfo[i][j] = [0,0,0] #[PheromeForaging, PheromoneRetHome, SugarAmount]
 	#
-for i in range(nestPosition-1,nestPosition+2):
-	for j in range(nestPosition-1,nestPosition+2):
+for i in range(nestPosition-2,nestPosition+3):
+	for j in range(nestPosition-2,nestPosition+3):
 		gridInfo[i][j][2] = -1
 #===========================================================================
 # PLOT INFO 
@@ -37,7 +37,7 @@ for i in range(fieldSize):
 	for j in range(fieldSize):
 		plotInfo[i][j] = [0,0,0] #[state, health, SugarAmount]
 	#
-spawn = True
+spawn = 0
 gridInfo[5][5][2] = 1000
 plotInfo[5][5][2] = 1000
 for it in range(200000):
@@ -45,12 +45,13 @@ for it in range(200000):
 	plotInfo[5][5][2] = 1000
 	#spawn new ant from nest
 	#if spawn:
-	if(it%5 == 1):
-		xPos = np.random.random_integers(nestPosition-1,nestPosition+1)
-		yPos = np.random.random_integers(nestPosition-1,nestPosition+1)
+	if(it%2 == 0 and spawn == 0):
+		xPos = np.random.random_integers(nestPosition,nestPosition)
+		yPos = np.random.random_integers(nestPosition,nestPosition)
 		Agents.append(HumanRandom(xPos, yPos, lifeTime))
 		nbrHuman += 1
-	#spawn = True
+	if(spawn > 0):
+		spawn -= 1
 	#moves all agents once
 	i = 0
 	while i < nbrHuman:
@@ -69,8 +70,9 @@ for it in range(200000):
 			#
 			if gridInfo[pos[0]][pos[1]][2] == -1 and Agents[i].GetState() == HOME : 
 				#to recognise nest
+				#print(Agents[i].GetHealth(),'Health Left')
 				Agents[i].ChangeState(FOOD)
-				#spawn = False
+				spawn += 1
 				collectedSugar += 1
 			#
 		i += 1
@@ -84,27 +86,28 @@ for it in range(200000):
 	diffGrid = np.zeros((fieldSize,fieldSize,3))
 	#lowers pheromones and food
 	#FIX add diffusion'
-	diffRate = 0.001
+	foodDiff = 0
+	homeDiff = 0.1	
 	for i in range(fieldSize):
 		for j in range(fieldSize):
-			diffGrid[i][j][0] -= gridInfo[i][j][0]*diffRate*4
-			diffGrid[i][j][1] -= gridInfo[i][j][1]*diffRate*4*10
+			diffGrid[i][j][0] -= gridInfo[i][j][0]*foodDiff*4
+			diffGrid[i][j][1] -= gridInfo[i][j][1]*homeDiff*4
 			
-			diffGrid[(i+1)%fieldSize][(j+1)%fieldSize][0] += gridInfo[i][j][0]*diffRate
-			diffGrid[(i+1)%fieldSize][(j+1)%fieldSize][1] += gridInfo[i][j][1]*diffRate*10
+			diffGrid[(i+1)%fieldSize][(j)%fieldSize][0] += gridInfo[i][j][0]*foodDiff
+			diffGrid[(i+1)%fieldSize][(j)%fieldSize][1] += gridInfo[i][j][1]*homeDiff
 			
-			diffGrid[(i+1)%fieldSize][(j-1)%fieldSize][0] += gridInfo[i][j][0]*diffRate
-			diffGrid[(i+1)%fieldSize][(j-1)%fieldSize][1] += gridInfo[i][j][1]*diffRate*10
+			diffGrid[(i)%fieldSize][(j-1)%fieldSize][0] += gridInfo[i][j][0]*foodDiff
+			diffGrid[(i)%fieldSize][(j-1)%fieldSize][1] += gridInfo[i][j][1]*homeDiff
 			
-			diffGrid[(i-1)%fieldSize][(j+1)%fieldSize][0] += gridInfo[i][j][0]*diffRate
-			diffGrid[(i-1)%fieldSize][(j+1)%fieldSize][1] += gridInfo[i][j][1]*diffRate*10
+			diffGrid[(i-1)%fieldSize][(j)%fieldSize][0] += gridInfo[i][j][0]*foodDiff
+			diffGrid[(i-1)%fieldSize][(j)%fieldSize][1] += gridInfo[i][j][1]*homeDiff
 			
-			diffGrid[(i-1)%fieldSize][(j-1)%fieldSize][0] += gridInfo[i][j][0]*diffRate
-			diffGrid[(i-1)%fieldSize][(j-1)%fieldSize][1] += gridInfo[i][j][1]*diffRate*10
+			diffGrid[(i)%fieldSize][(j+1)%fieldSize][0] += gridInfo[i][j][0]*foodDiff
+			diffGrid[(i)%fieldSize][(j+1)%fieldSize][1] += gridInfo[i][j][1]*homeDiff
 			
 			
-			gridInfo[i][j][0] -= gridInfo[i][j][0]*0.01
-			gridInfo[i][j][1] -= gridInfo[i][j][1]*0.01
+			gridInfo[i][j][0] -= gridInfo[i][j][0]*0.05
+			gridInfo[i][j][1] -= gridInfo[i][j][1]*0.001
 			if (gridInfo[i][j][2] > 0):
 				gridInfo[i][j][2] -= 1
 				plotInfo[i][j][2] -= 1
@@ -112,7 +115,7 @@ for it in range(200000):
 	#
 	gridInfo = gridInfo + diffGrid
 	plotW8 = 10 # how often to plot, e.i once every "plotW8" iterations
-	if it%plotW8 == 5:
+	if it%plotW8 == 0:
 		print(collectedSugar/(it+1),'FoodCollected average')
 		PlotDelay = 0.0005
 		Environment.Grid(np.copy(plotInfo), fieldSize, PlotDelay)

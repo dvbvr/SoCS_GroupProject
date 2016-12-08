@@ -14,12 +14,13 @@ class HumanRandom(Agent):
 	def Move(self, grid):
 		oldPosition = [self.xPos,self.yPos]
 		modS = np.shape(grid)[0]
-		pheroParameter = 10
+		pheroParameter = 1
 		currPos = np.array([self.xPos, self.yPos])
-		weights = np.array([5,10,20,10,5])
+		weights = np.array([1,2,3,2,1])
 		# if see sugar go there
 		if (self.state == 0):
-			grid[self.xPos][self.yPos][1] += 1
+			if grid[self.xPos][self.yPos][1] < 100*((self.health/self.maxHealth)**5):
+				grid[self.xPos][self.yPos][1] = 100*((self.health/self.maxHealth)**5)
 			noSugar = True
 			for i in range(8):
 				[x,y] = currPos + self.dirList[i]
@@ -32,9 +33,14 @@ class HumanRandom(Agent):
 					noSugar = False
 					#[x,y] = sugar position			
 			if noSugar:
+				bestPhero = 0
+				bestI = 2
 				for i in range(5):
 					[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
-					weights[i] += grid[x%modS][y%modS][0]*pheroParameter
+					if (grid[x%modS][y%modS][0] > bestPhero):
+						bestI = i
+						bestPhero = grid[x%modS][y%modS][0]
+				weights[bestI] = 10
 				totWeight = np.sum(weights)	
 				picked = np.random.random_integers(0,totWeight-1)
 				for i in range(5):
@@ -48,16 +54,21 @@ class HumanRandom(Agent):
 						picked -= weights[i]			
 				#look for food pheromones
 		else:
-			grid[self.xPos][self.yPos][0] += 2/self.maxHealth*self.health
+			if (grid[self.xPos][self.yPos][0] < 3):
+				grid[self.xPos][self.yPos][0] += 1
+			bestPhero = 0
+			bestI = 2
 			for i in range(5):
 				[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
-				weights[i] += grid[x%modS][y%modS][1]*pheroParameter
+				if (grid[x%modS][y%modS][1] > bestPhero):
+					bestI = i
+					bestPhero = grid[x%modS][y%modS][1]
+			weights[bestI] = 10
 			totWeight = np.sum(weights)	
 			picked = np.random.random_integers(0,totWeight-1)
 			for i in range(5):
 				if picked < weights[i]:
 					[x,y] = currPos + self.dirList[(self.direction+i-2)%8]
-					grid[self.xPos][self.yPos][0] += 1
 					self.xPos = x%modS
 					self.yPos = y%modS
 					self.direction = self.direction+i-2
@@ -76,7 +87,7 @@ class HumanRandom(Agent):
 	def ChangeState(self, state):
 		self.state = state
 		self.direction = (self.direction+4)%8
-		#self.health += 100
+		self.health = self.maxHealth
 	#
 	        
 	def GetState(self):

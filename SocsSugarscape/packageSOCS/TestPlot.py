@@ -36,9 +36,10 @@ terrain[4][5][2] = 21
 #===============================================================================
 # # Initialize terrain
 #===============================================================================
-PlotDelay = 0.005
+plot_Ants, AntsFigure = Environment.AntGridFigure(fieldSize)
+
 for i in range(5):
-    Environment.Grid(np.copy(terrain), fieldSize, PlotDelay)
+    Environment.AntGridPlot(np.copy(terrain), fieldSize, PlotDelay, plot_Ants, AntsFigure)
 plt.show()
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

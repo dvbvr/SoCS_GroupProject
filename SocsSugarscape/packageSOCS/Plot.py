@@ -6,319 +6,251 @@ Created on 21.11.2016
 
 import numpy as np
 import matplotlib.pyplot as plt
-#from matplotlib import gridspec
-#from IPython.core.pylabtools import figsize
 
-#import mpl_toolkits.axes_grid1
-#from matplotlib.colors import LinearSegmentedColormap
-#from mpl_toolkits.axes_grid1 import make_axes_locatable, axes_size
 
 class Environment:
 
-	def Grid(terrainInfo, fieldSize, PlotDelay, nestPosition=None):    
+	def AntGridFigure(fieldSize, maxFoodAmount, nestPosition):    
+		'''
+		This method has to be called before the looping occours, for a better performance.
+		Inspired by:
+		http://bastibe.de/2013-05-30-speeding-up-matplotlib.html
+		'''
+		#=======================================================================
+		# The Figure
+		#======================================================================= 
+		# Define the COLORMAPS for the plots
+		# Health:
+		#cmapHealth = plt.cm.get_cmap('cool')
+		# Sugar:	
+		cmapSugar = plt.cm.get_cmap('PiYG_r')#('YlOrRd')#('Blues')#('YlOrRd')
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+		figname='Environment'
+		figsizeX =18
+		figSizeY = 9                
+		figsize=(figsizeX,figSizeY)
+		antsFigure = plt.figure(figname,figsize)	
+		antsSubPlot = antsFigure.add_subplot(111)     
+		antsSubPlot.set_aspect('equal')
+		antsSubPlot.set_title('Environment',fontsize=14)
+		antsSubPlot.set_xlabel('x',fontsize=12)
+		antsSubPlot.set_ylabel('y',fontsize=12)
+		#antsSubPlot.grid(True,linestyle='-',color='0.75')
+		antsSubPlot.set_xlim(-0.5, fieldSize+0.5-1)
+		antsSubPlot.set_ylim(-0.5, fieldSize+0.5-1)     
+		plt.axis('off')
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
+		npaAgentForagingPosY = np.array([0])
+		npaAgentForagingPosX = np.array([0])
+		npaFoodAmount = np.zeros((fieldSize,fieldSize))
+		#
+		sugarPlot = antsSubPlot.imshow(npaFoodAmount, interpolation='none', cmap=cmapSugar, vmin=0, vmax=maxFoodAmount)
+		antsPlotFood, 	= antsSubPlot.plot(npaAgentForagingPosY,npaAgentForagingPosX, 'p', ms=7, color='violet')
+		antPlotHome, 	= antsSubPlot.plot(npaAgentForagingPosY,npaAgentForagingPosX, 'o', ms=10, color='blue')	
+		nestPlot, 		= antsSubPlot.plot(nestPosition,nestPosition, 'o', ms=30, color='black')	
+		# Legend
+		handles, labels = antsSubPlot.get_legend_handles_labels()
+		display = (0,1,2)
+		# Create custom artists
+		#antsSubPlot.legend(scatterpoints=1, bbox_to_anchor=(0,0,-0.05, 1))
+		AntsForaging 		= plt.Line2D((0,1),(0,0), color='violet', marker='p')
+		AntsReturningHome 	= plt.Line2D((0,1),(0,0), color='blue', marker='o')
+		nest				= plt.Line2D((0,1),(0,0), color='black', marker='o')
+		#food				= plt.Line2D((0,1),(0,0), color='black', marker='s')
+		# Create legend from custom artist/label lists
+		antsSubPlot.legend([handle for i,handle in enumerate(handles) if i in display]+[AntsForaging,AntsReturningHome,nest],
+							[label for i,label in enumerate(labels) if i in display]+['Ants foraging', 'Ants returning home', 'Nest'],
+							numpoints=1, bbox_to_anchor=(0,0,-0.05, 1))
+
+		#
+		img = plt.imshow(np.array([[0,1]]), cmap=cmapSugar)
+		img.set_visible(False)		
+		cbarAmountSugar = plt.colorbar(orientation="vertical")
+		cbarAmountSugar.set_label('Amount of food')
+		#
+		plt.ion()
+		plt.pause(0.0001)
+		antsFigure.canvas.draw()
+		plt.ioff()
+		#
+		return antsSubPlot, antsFigure, antsPlotFood, antPlotHome, sugarPlot, nestPlot
+	#
+	
+	
+
+	def AntGridPlot(terrainInfo, fieldSize, PlotDelay, 
+				antsPlotHome, antsPlotFood, sugarPlot, nestPlot,
+				antsSubPlot, antsFigure, nestPosition):    
+		#======================================================================
+		# Structure of the terrainInfo:
+		#======================================================================
+		# [agentState, agentHealth, sugarAmount]
+		# [agentSate: 	0:foraging 
+		#				1:ReturningHome
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
 		AGENTSTATE = 0
 		AGENTHEALTH = 1
 		SUGARAMOUNT = 2
-		#[agentState, agentHealth, sugarAmount]
-		#[AgentSate 0:foraging 1:ReturningHome, agentHealth, foodAmount]
-
+		AGENTFORAGING = 0
+		AGENTRETURNINGHOME = 1		
 		# AgentForaging position and state        
 		npaAgentForagingPosX = np.array([])
 		npaAgentForagingPosY = np.array([])
 		npaAgentStateFor = np.array([])
 		paAgentHealthFor = np.array([])
-
 		# AgentRetHome position and state        
 		npaAgentRetHomePosX = np.array([])
 		npaAgentRetHomePosY = np.array([])
 		npaAgentStateRet = np.array([])
 		npaAgentHealthRetHome = np.array([])
-
-		# Sugar position and amount
-		npaFoodAmount_X = np.array([])
-		npaFoodAmount_Y = np.array([])
-		npaFoodAmount = np.array([])
 		
 		#=======================================================================
 		# Get Information from terrainInfo,
-		# so that it can be added to the scatterplot.
-		# 
-		# Get the amount of sugar from terrainInfo for the imshow plot)
 		#=======================================================================
 		for y in range(fieldSize):
 			for x in range(fieldSize):
 				# If HEALTH than there is a agent
 				if terrainInfo[y,x,AGENTHEALTH] >= 1: 					
 					# Recognise the foraging agent
-					if terrainInfo[y,x,AGENTSTATE] == 0: 
-						npaAgentForagingPosX = np.append(npaAgentForagingPosX, np.array([x]))
-						npaAgentForagingPosY = np.append(npaAgentForagingPosY, np.array([y]))
-						npaAgentStateFor = np.append(npaAgentStateFor, terrainInfo[x,y,AGENTSTATE])
-						paAgentHealthFor = np.append(paAgentHealthFor, terrainInfo[y,x,AGENTHEALTH])
-						
-					# Recognise the retruning agent
-					if terrainInfo[y,x,AGENTSTATE] == 1: 
-						npaAgentRetHomePosX = np.append(npaAgentRetHomePosX, np.array([x]))
-						npaAgentRetHomePosY = np.append(npaAgentRetHomePosY, np.array([y]))
-						npaAgentStateRet = np.append(npaAgentStateRet, terrainInfo[x,y,AGENTSTATE])
-						npaAgentHealthRetHome = np.append(npaAgentHealthRetHome, terrainInfo[y,x,AGENTHEALTH])
+					if terrainInfo[y,x,AGENTSTATE] == AGENTFORAGING: 
+						npaAgentForagingPosX 	= np.append(npaAgentForagingPosX, np.array([x]))
+						npaAgentForagingPosY 	= np.append(npaAgentForagingPosY, np.array([y]))
+						npaAgentStateFor 		= np.append(npaAgentStateFor, terrainInfo[x,y,AGENTSTATE])
+						paAgentHealthFor 		= np.append(paAgentHealthFor, terrainInfo[x,y,AGENTHEALTH])						
+					# Recognise the returning agent
+					if terrainInfo[y,x,AGENTSTATE] == AGENTRETURNINGHOME: 
+						npaAgentRetHomePosX 	= np.append(npaAgentRetHomePosX, np.array([x]))
+						npaAgentRetHomePosY 	= np.append(npaAgentRetHomePosY, np.array([y]))
+						npaAgentStateRet 		= np.append(npaAgentStateRet, terrainInfo[x,y,AGENTSTATE])
+						npaAgentHealthRetHome 	= np.append(npaAgentHealthRetHome, terrainInfo[x,y,AGENTHEALTH])
 					#
 				#
 			#
-		#
-		# get sugar amounts from terrainInfo
-		npaFoodAmount = np.zeros([fieldSize,fieldSize])        
-		for y in range(fieldSize):
-			for x in range(fieldSize):
-				npaFoodAmount[x,y]=terrainInfo[y][x][SUGARAMOUNT]
-			#
+		#		
+		npaFoodAmount = terrainInfo[:,:,SUGARAMOUNT]
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+		#=======================================================================		
+		# Plots 
 		#=======================================================================
-		# Define the COLORMAPS for the plots
-		#=======================================================================
-		# Health
-		cmapHealth = plt.cm.get_cmap('cool')
-		#Sugar		
-		cmapSugar = plt.cm.get_cmap('YlOrRd')#('Blues')#('YlOrRd')
-		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       
-
-		#=======================================================================
-		# The Figure
-		#======================================================================= 
-		figname='terrain'
-		figsizeX =18
-		figSizeY = 9                
-		figsize=(figsizeX,figSizeY)
-		mainFigure = plt.figure(figname,figsize)
-
-		plt.ion()        
-		plt.clf()
-		plt.draw()
-
-		ax = mainFigure.add_subplot(111)        
-		ax.set_aspect('equal')
-		ax.set_title("Environment",fontsize=14)
-		ax.set_xlabel("x",fontsize=12)
-		ax.set_ylabel("y",fontsize=12)
-		ax.grid(True,linestyle='-',color='0.75')
-		ax.set_xlim(-0.5, fieldSize+0.5-1)
-		ax.set_ylim(-0.5, fieldSize+0.5-1)        
-
-		# Scatterplott the AgentForaging
-		fAgentTypeI = ax.scatter(
-                        npaAgentForagingPosY, npaAgentForagingPosX,                      
-                        s=80, 
-                        c=npaAgentStateFor,
-		                #vmin=0, vmax=10, # --> for min and max 
-                        marker = 's',
-                        edgecolor='black', 
-                        cmap=cmapHealth,
-                        label='Agent foraging')
-
-		# Scatterplott the AgentRetHome
-		fAgentTypeII = ax.scatter(
-		                npaAgentRetHomePosY, npaAgentRetHomePosX,                      
-		                s=80, 
-		                c=npaAgentStateRet, #npaAgentStateRet,
-		                #vmin=0, vmax=10, # --> for min and max 
-		                marker = 'o',
-		                edgecolor='black', 
-		                cmap=cmapHealth,
-		                label='Agent returning to the nest')
-
-		# The position of the scatterplot legend of the agents
-		ax.legend(scatterpoints=1, bbox_to_anchor=(0,0,-0.05, 1))
-		legend = ax.get_legend()
-		legend.legendHandles[0].set_color('black')
-		legend.legendHandles[1].set_color('black')
-		
-		# Adding the colorbar agent state
-		cbarHealth = mainFigure.colorbar(fAgentTypeI, shrink = 0.5)
-		cbarHealth.set_label('Health of Agent')
-
-		# plot the sugar as squares in a raster         
-		fSugar = ax.imshow(
-                        npaFoodAmount, 
-                        interpolation='none', 
-                        cmap=cmapSugar)
-
-		# Adding the colorbar
-		cbarAmountSugar = mainFigure.colorbar(fSugar, shrink= 0.5) 
-		cbarAmountSugar.set_label('Amount of food')
+		Environment.UpdatePlot(antsPlotFood, antsPlotHome, sugarPlot, nestPlot, nestPosition,
+							antsSubPlot, antsFigure, 
+							npaAgentForagingPosX, npaAgentForagingPosY,
+							npaAgentRetHomePosX, npaAgentRetHomePosY,
+							npaFoodAmount)
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-		plt.draw()
-		plt.pause(PlotDelay)
-		plt.ioff()  
 	#
 
-	def PheromoneGrid(terrainInfo, fieldSize, PlotDelay, nestPosition=None):    
-		PHEROMONE_HOME = 1
-		PHEROMONE_FOOD = 0
-		#[Pheromone1, Pheromone2, sugarAmount]
+
+
+	def UpdatePlot(antsPlot1, antsPlot2, sugarPlot, nestPlot, nestPosition,
+				antsSubPlot, antsFigure, 
+				new_dataX1, new_dataY1,
+				new_dataX2, new_dataY2,
+				new_data3):
 		
-		# get sugar amounts from terrainInfo
-		npaPHEROMONE_FOOD = np.zeros([fieldSize,fieldSize])        
-		for y in range(fieldSize):
-			for x in range(fieldSize):
-				npaPHEROMONE_FOOD[x,y]=terrainInfo[y][x][PHEROMONE_FOOD]
-			#
-		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-		# get sugar amounts from terrainInfo
-		npaPHEROMONE_HOME = np.zeros([fieldSize,fieldSize])        
-		for y in range(fieldSize):
-			for x in range(fieldSize):
-				npaPHEROMONE_HOME[x,y]=terrainInfo[y][x][PHEROMONE_HOME]
-			#
-		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-		
+		sugarPlot.set_data(new_data3)					
+		antsPlot1.set_xdata(new_dataX1)
+		antsPlot1.set_ydata(new_dataY1)
+		antsPlot2.set_xdata(new_dataX2)
+		antsPlot2.set_ydata(new_dataY2)	
+		nestPlot.set_xdata(nestPosition)
+		nestPlot.set_ydata(nestPosition)
+		#	
+		antsSubPlot.draw_artist(antsSubPlot.patch)
+		antsSubPlot.draw_artist(sugarPlot)
+		antsSubPlot.draw_artist(nestPlot)
+		antsSubPlot.draw_artist(antsPlot1)
+		antsSubPlot.draw_artist(antsPlot2)
+		#
+		antsFigure.canvas.update()
+		antsFigure.canvas.flush_events()
+	#
+	
+	
+	
+	def PheromoneGridFigure(fieldSize, 
+						maxFoodPheromone, maxHomePheromone, 
+						nestPosition=None):
 		#=======================================================================
-		# Define the COLORMAPS for the plots
-		#=======================================================================
-		#		
-		cmapFood = plt.cm.get_cmap('YlOrRd')#('Blues')#('YlOrRd')
-		cmapHome = plt.cm.get_cmap('YlGn')#('Blues')#('YlOrRd')
-		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       
-
-		#=======================================================================
-		# The Figure
+		# The Figure and the axis 
+		# (This has to be outside of the loop for better performance)
 		#======================================================================= 
-
-
-		plt.ion()        
-		plt.clf()
-		plt.draw()
+		# Define the COLORMAPS for the plots
+		cmapFood = plt.cm.get_cmap('YlOrRd')#('Blues')#('YlOrRd')
+		cmapHome = plt.cm.get_cmap('YlGn')#('Blues')#('YlOrRd')   
+		#
 		figname='Pheromonetypes'
 		figsizeX =18
 		figSizeY = 9                
 		figsize=(figsizeX,figSizeY)
-		mainFigure = plt.figure(figname,figsize)
-
-		plt.ion()        
-		plt.clf()
-		plt.draw()
-				
-		ax1 = mainFigure.add_subplot(121)        
-		ax2 = mainFigure.add_subplot(122)
-		#ax1.set_aspect('auto')
-		ax1.set_title("Pherome Home",fontsize=14)
-		ax1.set_xlabel("x",fontsize=12)
-		ax1.set_ylabel("y",fontsize=12)
-		ax1.grid(True,linestyle='-',color='0.75')
-		ax1.set_xlim(-0.5, fieldSize+0.5-1)
-		ax1.set_ylim(-0.5, fieldSize+0.5-1)   
-		# plot the sugar as squares in a raster         
-		fHome = ax1.imshow(
-                        npaPHEROMONE_HOME, 
-                        interpolation='none', 
-                        cmap=cmapHome)
+		#
+		pheromoneFigure = plt.figure(figname,figsize)	
+		#			
+		subPlot1_Home = pheromoneFigure.add_subplot(121)        
+		subPlot1_Home.set_title('Pheromene home',fontsize=14)
+		subPlot1_Home.set_xlabel('x',fontsize=12)
+		subPlot1_Home.set_ylabel('y',fontsize=12)
+		#subPlot1_Home.grid(True,linestyle='-',color='0.75')
+		subPlot1_Home.set_xlim(-0.5, fieldSize+0.5-1)
+		subPlot1_Home.set_ylim(-0.5, fieldSize+0.5-1)  
+		#
+		subPlot2_Food = pheromoneFigure.add_subplot(122)
+		subPlot2_Food.set_title('Pheromone food',fontsize=14)
+		subPlot2_Food.set_xlabel('x',fontsize=12)
+		subPlot2_Food.set_ylabel('y',fontsize=12)
+		#subPlot2_Food.grid(True,linestyle='-',color='0.75')
+		subPlot2_Food.set_xlim(-0.5, fieldSize+0.5-1)
+		subPlot2_Food.set_ylim(-0.5, fieldSize+0.5-1)   
+		#
+		imshowEmptyArray = np.zeros((fieldSize,fieldSize))  
+		#
+		pheroHomePlot = subPlot1_Home.imshow(
+			                imshowEmptyArray, 
+			                interpolation='none', 
+			                cmap=cmapHome,
+			                vmin=0, vmax=maxHomePheromone)
 		#		
+		plt.show(block=False)
 
-		ax2.set_title("Pheromone Food",fontsize=14)
-		ax2.set_xlabel("x",fontsize=12)
-		ax2.set_ylabel("y",fontsize=12)
-		ax2.grid(True,linestyle='-',color='0.75')
-		ax2.set_xlim(-0.5, fieldSize+0.5-1)
-		ax2.set_ylim(-0.5, fieldSize+0.5-1)   
-		# plot the sugar as squares in a raster         
-		fFood = ax2.imshow(
-                        npaPHEROMONE_FOOD, 
-                        interpolation='none', 
-                        cmap=cmapFood)
-		#       
-
-		plt.draw()
-		plt.pause(PlotDelay)
-		plt.ioff()  
+		pheroFoodPlot = subPlot2_Food.imshow(
+			                imshowEmptyArray, 
+			                interpolation='none', 
+			                cmap=cmapFood,
+			                vmin=0, vmax=maxFoodPheromone)
+		#       		
+		plt.show(block=False)
+		return subPlot1_Home, subPlot2_Food, pheromoneFigure, pheroHomePlot, pheroFoodPlot
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		
+		
+		
+	def PheromoneGridPlot(pheromoneFigure, subPlot1_Home, subPlot2_Food,
+						terrainInfo, fieldSize, PlotDelay,
+						pheroHomePlot, pheroFoodPlot,
+						nestPosition=None):   
+		#=======================================================================
+		# Add the data to the axis (Use this code while looping)
+		# [Pheromone1, Pheromone2, sugarAmount]
+		# get sugar amounts from terrainInfo
+		#======================================================================= 
+		PHEROMONE_HOME = 1
+		PHEROMONE_FOOD = 0	
+		#
+		npaPHEROMONE_HOME = terrainInfo[:,:,PHEROMONE_HOME]
+		#subPlot1_Home.draw_artist(subPlot1_Home.patch)			
+		pheroHomePlot.set_data(npaPHEROMONE_HOME)	
+		subPlot1_Home.draw_artist(pheroHomePlot)
+		#
+		npaPHEROMONE_FOOD = terrainInfo[:,:,PHEROMONE_FOOD]	
+		#subPlot2_Food.draw_artist(subPlot2_Food.patch)
+		pheroFoodPlot.set_data(npaPHEROMONE_FOOD)	
+		subPlot2_Food.draw_artist(pheroFoodPlot)
+		#
+		pheromoneFigure.canvas.update()
+		pheromoneFigure.canvas.flush_events()		
+		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#
-
-
-#===============================================================================
-# 	def
-# 		PHEROMONE_HOME = 1
-# 		PHEROMONE_FOOD = 0
-# 		#[Pheromone1, Pheromone2, sugarAmount]
-# 		
-# 		# get sugar amounts from plotInfo
-# 		npaPHEROMONE_FOOD = np.zeros([fieldSize,fieldSize])        
-# 		for y in range(fieldSize):
-# 			for x in range(fieldSize):
-# 				npaPHEROMONE_FOOD[x,y]=plotInfo[y][x][PHEROMONE_FOOD]
-# 			#
-# 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 
-# 		# get sugar amounts from plotInfo
-# 		npaPHEROMONE_HOME = np.zeros([fieldSize,fieldSize])        
-# 		for y in range(fieldSize):
-# 			for x in range(fieldSize):
-# 				npaPHEROMONE_HOME[x,y]=plotInfo[y][x][PHEROMONE_HOME]
-# 			#
-# 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# 
-# 		
-# 		#=======================================================================
-# 		# Define the COLORMAPS for the plots
-# 		#=======================================================================
-# 		#		
-# 		cmapFood = plt.cm.get_cmap('YlOrRd')#('Blues')#('YlOrRd')
-# 		cmapHome = plt.cm.get_cmap('YlGn')#('Blues')#('YlOrRd')
-# 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~       
-# 
-# 		#=======================================================================
-# 		# The Figure
-# 		#======================================================================= 
-# 
-# 
-# 		plt.ion()        
-# 		plt.clf()
-# 		plt.draw()
-# 		figname='Pheromonetypes'
-# 		figsizeX =18
-# 		figSizeY = 9                
-# 		figsize=(figsizeX,figSizeY)
-# 		mainFigure = plt.figure(figname,figsize)
-# 
-# 		plt.ion()        
-# 		plt.clf()
-# 		plt.draw()
-# 				
-# 		ax1 = mainFigure.add_subplot(121)        
-# 		ax2 = mainFigure.add_subplot(122)
-# 		#ax1.set_aspect('auto')
-# 		ax1.set_title("Pherome Home",fontsize=14)
-# 		ax1.set_xlabel("x",fontsize=12)
-# 		ax1.set_ylabel("y",fontsize=12)
-# 		ax1.grid(True,linestyle='-',color='0.75')
-# 		ax1.set_xlim(-0.5, fieldSize+0.5-1)
-# 		ax1.set_ylim(-0.5, fieldSize+0.5-1)   
-# 		# plot the sugar as squares in a raster         
-# 		fHome = ax1.imshow(
-#                         npaPHEROMONE_HOME, 
-#                         interpolation='none', 
-#                         cmap=cmapHome)
-# 		#		
-# 
-# 		ax2.set_title("Pheromone Food",fontsize=14)
-# 		ax2.set_xlabel("x",fontsize=12)
-# 		ax2.set_ylabel("y",fontsize=12)
-# 		ax2.grid(True,linestyle='-',color='0.75')
-# 		ax2.set_xlim(-0.5, fieldSize+0.5-1)
-# 		ax2.set_ylim(-0.5, fieldSize+0.5-1)   
-# 		# plot the sugar as squares in a raster         
-# 		fFood = ax2.imshow(
-#                         npaPHEROMONE_FOOD, 
-#                         interpolation='none', 
-#                         cmap=cmapFood)
-# 		#       
-# 
-# 		plt.draw()
-# 		plt.pause(PlotDelay)
-# 		plt.ioff()  
-# 	#
-#===============================================================================
 
 
 

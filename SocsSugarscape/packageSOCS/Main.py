@@ -23,8 +23,10 @@ carreiSize= 1
 collectedSugar = 0
 plotDelay = 0.001 #--> not working right now
 maxFoodAmount = 100
-maxFoodPheromone = 8
+maxFoodPheromone = 3.5
 maxHomePheromone = 90
+npaFood = np.array([])
+npaIterations = np.array([])
 
 #nestPosition = None
 # for the plotting
@@ -56,29 +58,58 @@ for i in range(fieldSize):
 	#
 	
 spawn = 0
+gridInfo[5][5][2] = maxFoodAmount
+plotInfo[5][5][2] = maxFoodAmount
+
+gridInfo[35][5][2] = maxFoodAmount
+plotInfo[35][5][2] = maxFoodAmount
+
+gridInfo[5][35][2] = maxFoodAmount
+plotInfo[5][35][2] = maxFoodAmount
+
+gridInfo[20][5][2] = maxFoodAmount
+plotInfo[20][5][2] = maxFoodAmount
+
+gridInfo[5][20][2] = maxFoodAmount
+plotInfo[5][20][2] = maxFoodAmount
+
 gridInfo[10][5][2] = maxFoodAmount
 plotInfo[10][5][2] = maxFoodAmount
 
 gridInfo[5][10][2] = maxFoodAmount
 plotInfo[5][10][2] = maxFoodAmount
 
+gridInfo[10][15][2] = maxFoodAmount
+plotInfo[10][15][2] = maxFoodAmount
+
+gridInfo[25][25][2] = maxFoodAmount
+plotInfo[25][25][2] = maxFoodAmount
+
 gridInfo[35][35][2] = maxFoodAmount
 plotInfo[35][35][2] = maxFoodAmount
 
 for it in range(200000):
-	gridInfo[10][5][2] = maxFoodAmount
-	plotInfo[10][5][2] = maxFoodAmount
+	if(it%20000 == 19900):
+		xPos = np.random.random_integers(0,fieldSize-1)
+		yPos = np.random.random_integers(0,fieldSize-1)
+		while gridInfo[xPos][yPos][2] == -1:
+			xPos = np.random.random_integers(0,fieldSize-1)
+			yPos = np.random.random_integers(0,fieldSize-1)
+		gridInfo[xPos][yPos][2] = maxFoodAmount
+		plotInfo[xPos][yPos][2] = maxFoodAmount
+	#gridInfo[10][5][2] = maxFoodAmount
+	#plotInfo[10][5][2] = maxFoodAmount
 
-	gridInfo[5][10][2] = maxFoodAmount
-	plotInfo[5][10][2] = maxFoodAmount
+	#gridInfo[5][10][2] = maxFoodAmount
+	#plotInfo[5][10][2] = maxFoodAmount
 
-	gridInfo[35][35][2] = maxFoodAmount
-	plotInfo[35][35][2] = maxFoodAmount
+	#gridInfo[35][35][2] = maxFoodAmount
+	#plotInfo[35][35][2] = maxFoodAmount
 	#spawn new ant from nest
 	#if spawn:
 	if(it%2 == 0 and spawn == 0):
-		xPos = np.random.random_integers(nestPosition,nestPosition)
-		yPos = np.random.random_integers(nestPosition,nestPosition)
+		xPos = nestPosition
+		yPos = nestPosition
 		Agents.append(HumanRandom(xPos, yPos, lifeTime))
 		nbrHuman += 1
 	#
@@ -122,8 +153,22 @@ for it in range(200000):
 	diffGrid = np.zeros((fieldSize,fieldSize,3))
 	#lowers pheromones and food
 	#FIX add diffusion'
-	foodDiff = 0
-	homeDiff = 0.1	
+	#keep the parameters under or equal to 0.2
+	foodDiff = 0.0001
+	homeDiff = 0.01
+	
+	#foodDiff = 0.0001
+	#homeDiff = 0.01
+	#iterationsNeeded = 2081
+	#WORST ONE
+	#foodDiff = 0.0001
+	#homeDiff = 0.01	
+	
+	#BEST ONE
+	#foodDiff = 0.0001
+	#homeDiff = 0.01	
+	
+		
 	
 	for i in range(fieldSize):
 		for j in range(fieldSize):
@@ -143,10 +188,13 @@ for it in range(200000):
 			diffGrid[(i)%fieldSize][(j+1)%fieldSize][1] += gridInfo[i][j][1]*homeDiff
 						
 			gridInfo[i][j][0] -= gridInfo[i][j][0]*0.05
+			if gridInfo[i][j][0] < 0.1:
+				gridInfo[i][j][0] = 0
+				diffGrid[i][j][0] = 0
 			gridInfo[i][j][1] -= gridInfo[i][j][1]*0.001
-			if (gridInfo[i][j][2] > 0):
-				gridInfo[i][j][2] -= 1
-				plotInfo[i][j][2] -= 1
+			#if (gridInfo[i][j][2] > 0):
+			#	gridInfo[i][j][2] -= 1
+			#	plotInfo[i][j][2] -= 1
 			#
 		#
 	#
@@ -158,7 +206,9 @@ for it in range(200000):
 		print(collectedSugar,'total sugar')
 		print(it,'iterations')
 		print(nbrHuman,'number of ants')
-		
+		npaFood = np.append(npaFood, collectedSugar)#
+		npaIterations = np.append(npaIterations, it)
+
 		Environment.AntGridPlot(np.copy(plotInfo), fieldSize, plotDelay, 
 									antPlotHome, antsPlotFood, sugarPlot, nestPlot,
 									antsSubPlot, antsFigure, nestPosition)
@@ -166,6 +216,15 @@ for it in range(200000):
 		Environment.PheromoneGridPlot(pheromoneFigure, subPlot1_Home, subPlot2_Food,
 									np.copy(gridInfo), fieldSize, plotDelay,  
 									pheroHomePlot, pheroFoodPlot)
+
+# 	if (collectedSugar == 1000):
+# 		print(it,'Iterations needed for current parameters')
+# 		#save np arrays for plot
+# 		#npaIterations
+# 		#npaFood
+# 		#foodDiff
+# 		#homeDiff
+# 		break
 	#
 	
 	#===========================================================================

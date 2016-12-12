@@ -23,7 +23,7 @@ class Environment:
 		# Health:
 		#cmapHealth = plt.cm.get_cmap('cool')
 		# Sugar:	
-		cmapSugar = plt.cm.get_cmap('PiYG_r')#('YlOrRd')#('Blues')#('YlOrRd')
+		cmapSugar = plt.cm.get_cmap('cool')#('PiYG_r')#('YlOrRd')#('Blues')#('YlOrRd')
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 		figname='Environment'
 		figsizeX =18
@@ -32,9 +32,9 @@ class Environment:
 		antsFigure = plt.figure(figname,figsize)	
 		antsSubPlot = antsFigure.add_subplot(111)     
 		antsSubPlot.set_aspect('equal')
-		antsSubPlot.set_title('Environment',fontsize=14)
-		antsSubPlot.set_xlabel('x',fontsize=12)
-		antsSubPlot.set_ylabel('y',fontsize=12)
+		antsSubPlot.set_title('Environment',fontsize=30)
+		antsSubPlot.set_xlabel('x',fontsize=25)
+		antsSubPlot.set_ylabel('y',fontsize=25)
 		#antsSubPlot.grid(True,linestyle='-',color='0.75')
 		antsSubPlot.set_xlim(-0.5, fieldSize+0.5-1)
 		antsSubPlot.set_ylim(-0.5, fieldSize+0.5-1)     
@@ -188,17 +188,17 @@ class Environment:
 		pheromoneFigure = plt.figure(figname,figsize)	
 		#			
 		subPlot1_Home = pheromoneFigure.add_subplot(121)        
-		subPlot1_Home.set_title('Pheromene home',fontsize=14)
-		subPlot1_Home.set_xlabel('x',fontsize=12)
-		subPlot1_Home.set_ylabel('y',fontsize=12)
+		subPlot1_Home.set_title('Pheromene home',fontsize=30)
+		subPlot1_Home.set_xlabel('x',fontsize=25)
+		subPlot1_Home.set_ylabel('y',fontsize=25)
 		#subPlot1_Home.grid(True,linestyle='-',color='0.75')
 		subPlot1_Home.set_xlim(-0.5, fieldSize+0.5-1)
 		subPlot1_Home.set_ylim(-0.5, fieldSize+0.5-1)  
 		#
 		subPlot2_Food = pheromoneFigure.add_subplot(122)
-		subPlot2_Food.set_title('Pheromone food',fontsize=14)
-		subPlot2_Food.set_xlabel('x',fontsize=12)
-		subPlot2_Food.set_ylabel('y',fontsize=12)
+		subPlot2_Food.set_title('Pheromone food',fontsize=30)
+		subPlot2_Food.set_xlabel('x',fontsize=25)
+		subPlot2_Food.set_ylabel('y',fontsize=25)
 		#subPlot2_Food.grid(True,linestyle='-',color='0.75')
 		subPlot2_Food.set_xlim(-0.5, fieldSize+0.5-1)
 		subPlot2_Food.set_ylim(-0.5, fieldSize+0.5-1)   

@@ -12,6 +12,7 @@ class HumanRandom(Agent):
 	#
 
 	def Move(self, grid):
+		focusOnPheroParameter = 10
 		oldPosition = [self.xPos,self.yPos]
 		modS = np.shape(grid)[0]
 		pheroParameter = 1
@@ -40,7 +41,7 @@ class HumanRandom(Agent):
 					if (grid[x%modS][y%modS][0] > bestPhero):
 						bestI = i
 						bestPhero = grid[x%modS][y%modS][0]
-				weights[bestI] = 10
+				weights[bestI] = focusOnPheroParameter
 				totWeight = np.sum(weights)	
 				picked = np.random.random_integers(0,totWeight-1)
 				for i in range(5):
@@ -63,7 +64,7 @@ class HumanRandom(Agent):
 				if (grid[x%modS][y%modS][1] > bestPhero):
 					bestI = i
 					bestPhero = grid[x%modS][y%modS][1]
-			weights[bestI] = 10
+			weights[bestI] = focusOnPheroParameter
 			totWeight = np.sum(weights)	
 			picked = np.random.random_integers(0,totWeight-1)
 			for i in range(5):

@@ -1,0 +1,2416 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: PLots/PheromoneGrid_110.eps
+%%Creator: matplotlib version 1.5.3, http://matplotlib.org/
+%%CreationDate: Wed Dec 14 23:54:53 2016
+%%Orientation: portrait
+%%BoundingBox: -342 73 954 718
+%%EndComments
+%%BeginProlog
+/mpldict 8 dict def
+mpldict begin
+/m { moveto } bind def
+/l { lineto } bind def
+/r { rlineto } bind def
+/c { curveto } bind def
+/cl { closepath } bind def
+/box {
+m
+1 index 0 r
+0 exch r
+neg 0 r
+cl
+} bind def
+/clipbox {
+box
+clip
+newpath
+} bind def
+%!PS-Adobe-3.0 Resource-Font
+%%Title: Bitstream Vera Sans
+%%Copyright: Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.
+%%Creator: Converted from TrueType to type 3 by PPR
+25 dict begin
+/_d{bind def}bind def
+/_m{moveto}_d
+/_l{lineto}_d
+/_cl{closepath eofill}_d
+/_c{curveto}_d
+/_sc{7 -1 roll{setcachedevice}{pop pop pop pop pop pop}ifelse}_d
+/_e{exec}_d
+/FontName /BitstreamVeraSans-Roman def
+/PaintType 0 def
+/FontMatrix[.001 0 0 .001 0 0]def
+/FontBBox[-183 -236 1287 928]def
+/FontType 3 def
+/Encoding [ /space /parenleft /parenright /zero /one /two /three /five /P /a /d /e /f /g /h /i /m /n /o /r /s /t /x /y ] def
+/FontInfo 10 dict dup begin
+/FamilyName (Bitstream Vera Sans) def
+/FullName (Bitstream Vera Sans) def
+/Notice (Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.) def
+/Weight (Roman) def
+/Version (Release 1.10) def
+/ItalicAngle 0.0 def
+/isFixedPitch false def
+/UnderlinePosition -213 def
+/UnderlineThickness 143 def
+end readonly def
+/CharStrings 24 dict dup begin
+/space{318 0 0 0 0 0 _sc
+}_d
+/parenleft{390 0 86 -131 310 759 _sc
+310 759 _m
+266 683 234 609 213 536 _c
+191 463 181 389 181 314 _c
+181 238 191 164 213 91 _c
+234 17 266 -56 310 -131 _c
+232 -131 _l
+183 -54 146 20 122 94 _c
+98 168 86 241 86 314 _c
+86 386 98 459 122 533 _c
+146 607 182 682 232 759 _c
+310 759 _l
+_cl}_d
+/parenright{390 0 80 -131 304 759 _sc
+80 759 _m
+158 759 _l
+206 682 243 607 267 533 _c
+291 459 304 386 304 314 _c
+304 241 291 168 267 94 _c
+243 20 206 -54 158 -131 _c
+80 -131 _l
+123 -56 155 17 177 91 _c
+198 164 209 238 209 314 _c
+209 389 198 463 177 536 _c
+155 609 123 683 80 759 _c
+_cl}_d
+/zero{636 0 66 -13 570 742 _sc
+318 664 _m
+267 664 229 639 203 589 _c
+177 539 165 464 165 364 _c
+165 264 177 189 203 139 _c
+229 89 267 64 318 64 _c
+369 64 407 89 433 139 _c
+458 189 471 264 471 364 _c
+471 464 458 539 433 589 _c
+407 639 369 664 318 664 _c
+318 742 _m
+399 742 461 709 505 645 _c
+548 580 570 486 570 364 _c
+570 241 548 147 505 83 _c
+461 19 399 -13 318 -13 _c
+236 -13 173 19 130 83 _c
+87 147 66 241 66 364 _c
+66 486 87 580 130 645 _c
+173 709 236 742 318 742 _c
+_cl}_d
+/one{636 0 110 0 544 729 _sc
+124 83 _m
+285 83 _l
+285 639 _l
+110 604 _l
+110 694 _l
+284 729 _l
+383 729 _l
+383 83 _l
+544 83 _l
+544 0 _l
+124 0 _l
+124 83 _l
+_cl}_d
+/two{{636 0 73 0 536 742 _sc
+192 83 _m
+536 83 _l
+536 0 _l
+73 0 _l
+73 83 _l
+110 121 161 173 226 239 _c
+290 304 331 346 348 365 _c
+380 400 402 430 414 455 _c
+426 479 433 504 433 528 _c
+433 566 419 598 392 622 _c
+365 646 330 659 286 659 _c
+255 659 222 653 188 643 _c
+154 632 117 616 78 594 _c
+78 694 _l
+118 710 155 722 189 730 _c
+223 738 255 742 284 742 _c
+}_e{359 742 419 723 464 685 _c
+509 647 532 597 532 534 _c
+532 504 526 475 515 449 _c
+504 422 484 390 454 354 _c
+446 344 420 317 376 272 _c
+332 227 271 164 192 83 _c
+_cl}_e}_d
+/three{{636 0 76 -13 556 742 _sc
+406 393 _m
+453 383 490 362 516 330 _c
+542 298 556 258 556 212 _c
+556 140 531 84 482 45 _c
+432 6 362 -13 271 -13 _c
+240 -13 208 -10 176 -4 _c
+144 1 110 10 76 22 _c
+76 117 _l
+103 101 133 89 166 81 _c
+198 73 232 69 268 69 _c
+330 69 377 81 409 105 _c
+441 129 458 165 458 212 _c
+458 254 443 288 413 312 _c
+383 336 341 349 287 349 _c
+}_e{202 349 _l
+202 430 _l
+291 430 _l
+339 430 376 439 402 459 _c
+428 478 441 506 441 543 _c
+441 580 427 609 401 629 _c
+374 649 336 659 287 659 _c
+260 659 231 656 200 650 _c
+169 644 135 635 98 623 _c
+98 711 _l
+135 721 170 729 203 734 _c
+235 739 266 742 296 742 _c
+370 742 429 725 473 691 _c
+517 657 539 611 539 553 _c
+539 513 527 479 504 451 _c
+481 423 448 403 406 393 _c
+_cl}_e}_d
+/five{{636 0 77 -13 549 729 _sc
+108 729 _m
+495 729 _l
+495 646 _l
+198 646 _l
+198 467 _l
+212 472 227 476 241 478 _c
+255 480 270 482 284 482 _c
+365 482 429 459 477 415 _c
+525 370 549 310 549 234 _c
+549 155 524 94 475 51 _c
+426 8 357 -13 269 -13 _c
+238 -13 207 -10 175 -6 _c
+143 -1 111 6 77 17 _c
+77 116 _l
+106 100 136 88 168 80 _c
+199 72 232 69 267 69 _c
+}_e{323 69 368 83 401 113 _c
+433 143 450 183 450 234 _c
+450 284 433 324 401 354 _c
+368 384 323 399 267 399 _c
+241 399 214 396 188 390 _c
+162 384 135 375 108 363 _c
+108 729 _l
+_cl}_e}_d
+/P{603 0 98 0 569 729 _sc
+197 648 _m
+197 374 _l
+321 374 _l
+367 374 402 385 427 409 _c
+452 433 465 467 465 511 _c
+465 555 452 588 427 612 _c
+402 636 367 648 321 648 _c
+197 648 _l
+98 729 _m
+321 729 _l
+402 729 464 710 506 673 _c
+548 636 569 582 569 511 _c
+569 439 548 384 506 348 _c
+464 311 402 293 321 293 _c
+197 293 _l
+197 0 _l
+98 0 _l
+98 729 _l
+_cl}_d
+/a{{613 0 60 -13 522 560 _sc
+343 275 _m
+270 275 220 266 192 250 _c
+164 233 150 205 150 165 _c
+150 133 160 107 181 89 _c
+202 70 231 61 267 61 _c
+317 61 357 78 387 114 _c
+417 149 432 196 432 255 _c
+432 275 _l
+343 275 _l
+522 312 _m
+522 0 _l
+432 0 _l
+432 83 _l
+411 49 385 25 355 10 _c
+325 -5 287 -13 243 -13 _c
+187 -13 142 2 109 33 _c
+76 64 60 106 60 159 _c
+}_e{60 220 80 266 122 298 _c
+163 329 224 345 306 345 _c
+432 345 _l
+432 354 _l
+432 395 418 427 391 450 _c
+364 472 326 484 277 484 _c
+245 484 215 480 185 472 _c
+155 464 127 453 100 439 _c
+100 522 _l
+132 534 164 544 195 550 _c
+226 556 256 560 286 560 _c
+365 560 424 539 463 498 _c
+502 457 522 395 522 312 _c
+_cl}_e}_d
+/d{{635 0 55 -13 544 760 _sc
+454 464 _m
+454 760 _l
+544 760 _l
+544 0 _l
+454 0 _l
+454 82 _l
+435 49 411 25 382 10 _c
+353 -5 319 -13 279 -13 _c
+213 -13 159 13 117 65 _c
+75 117 55 187 55 273 _c
+55 359 75 428 117 481 _c
+159 533 213 560 279 560 _c
+319 560 353 552 382 536 _c
+411 520 435 496 454 464 _c
+148 273 _m
+148 207 161 155 188 117 _c
+215 79 253 61 301 61 _c
+}_e{348 61 385 79 413 117 _c
+440 155 454 207 454 273 _c
+454 339 440 390 413 428 _c
+385 466 348 485 301 485 _c
+253 485 215 466 188 428 _c
+161 390 148 339 148 273 _c
+_cl}_e}_d
+/e{{615 0 55 -13 562 560 _sc
+562 296 _m
+562 252 _l
+149 252 _l
+153 190 171 142 205 110 _c
+238 78 284 62 344 62 _c
+378 62 412 66 444 74 _c
+476 82 509 95 541 113 _c
+541 28 _l
+509 14 476 3 442 -3 _c
+408 -9 373 -13 339 -13 _c
+251 -13 182 12 131 62 _c
+80 112 55 181 55 268 _c
+55 357 79 428 127 481 _c
+175 533 241 560 323 560 _c
+397 560 455 536 498 489 _c
+}_e{540 441 562 377 562 296 _c
+472 322 _m
+471 371 457 410 431 440 _c
+404 469 368 484 324 484 _c
+274 484 234 469 204 441 _c
+174 413 156 373 152 322 _c
+472 322 _l
+_cl}_e}_d
+/f{352 0 23 0 371 760 _sc
+371 760 _m
+371 685 _l
+285 685 _l
+253 685 230 678 218 665 _c
+205 652 199 629 199 595 _c
+199 547 _l
+347 547 _l
+347 477 _l
+199 477 _l
+199 0 _l
+109 0 _l
+109 477 _l
+23 477 _l
+23 547 _l
+109 547 _l
+109 585 _l
+109 645 123 690 151 718 _c
+179 746 224 760 286 760 _c
+371 760 _l
+_cl}_d
+/g{{635 0 55 -207 544 560 _sc
+454 280 _m
+454 344 440 395 414 431 _c
+387 467 349 485 301 485 _c
+253 485 215 467 188 431 _c
+161 395 148 344 148 280 _c
+148 215 161 165 188 129 _c
+215 93 253 75 301 75 _c
+349 75 387 93 414 129 _c
+440 165 454 215 454 280 _c
+544 68 _m
+544 -24 523 -93 482 -139 _c
+440 -184 377 -207 292 -207 _c
+260 -207 231 -204 203 -200 _c
+175 -195 147 -188 121 -178 _c
+}_e{121 -91 _l
+147 -105 173 -115 199 -122 _c
+225 -129 251 -133 278 -133 _c
+336 -133 380 -117 410 -87 _c
+439 -56 454 -10 454 52 _c
+454 96 _l
+435 64 411 40 382 24 _c
+353 8 319 0 279 0 _c
+211 0 157 25 116 76 _c
+75 127 55 195 55 280 _c
+55 364 75 432 116 483 _c
+157 534 211 560 279 560 _c
+319 560 353 552 382 536 _c
+411 520 435 496 454 464 _c
+454 547 _l
+544 547 _l
+}_e{544 68 _l
+_cl}_e}_d
+/h{634 0 91 0 549 760 _sc
+549 330 _m
+549 0 _l
+459 0 _l
+459 327 _l
+459 379 448 417 428 443 _c
+408 469 378 482 338 482 _c
+289 482 251 466 223 435 _c
+195 404 181 362 181 309 _c
+181 0 _l
+91 0 _l
+91 760 _l
+181 760 _l
+181 462 _l
+202 494 227 519 257 535 _c
+286 551 320 560 358 560 _c
+420 560 468 540 500 501 _c
+532 462 549 405 549 330 _c
+_cl}_d
+/i{278 0 94 0 184 760 _sc
+94 547 _m
+184 547 _l
+184 0 _l
+94 0 _l
+94 547 _l
+94 760 _m
+184 760 _l
+184 646 _l
+94 646 _l
+94 760 _l
+_cl}_d
+/m{{974 0 91 0 889 560 _sc
+520 442 _m
+542 482 569 511 600 531 _c
+631 550 668 560 711 560 _c
+767 560 811 540 842 500 _c
+873 460 889 403 889 330 _c
+889 0 _l
+799 0 _l
+799 327 _l
+799 379 789 418 771 444 _c
+752 469 724 482 686 482 _c
+639 482 602 466 575 435 _c
+548 404 535 362 535 309 _c
+535 0 _l
+445 0 _l
+445 327 _l
+445 379 435 418 417 444 _c
+398 469 369 482 331 482 _c
+}_e{285 482 248 466 221 435 _c
+194 404 181 362 181 309 _c
+181 0 _l
+91 0 _l
+91 547 _l
+181 547 _l
+181 462 _l
+201 495 226 520 255 536 _c
+283 552 317 560 357 560 _c
+397 560 430 550 458 530 _c
+486 510 506 480 520 442 _c
+_cl}_e}_d
+/n{634 0 91 0 549 560 _sc
+549 330 _m
+549 0 _l
+459 0 _l
+459 327 _l
+459 379 448 417 428 443 _c
+408 469 378 482 338 482 _c
+289 482 251 466 223 435 _c
+195 404 181 362 181 309 _c
+181 0 _l
+91 0 _l
+91 547 _l
+181 547 _l
+181 462 _l
+202 494 227 519 257 535 _c
+286 551 320 560 358 560 _c
+420 560 468 540 500 501 _c
+532 462 549 405 549 330 _c
+_cl}_d
+/o{612 0 55 -13 557 560 _sc
+306 484 _m
+258 484 220 465 192 427 _c
+164 389 150 338 150 273 _c
+150 207 163 156 191 118 _c
+219 80 257 62 306 62 _c
+354 62 392 80 420 118 _c
+448 156 462 207 462 273 _c
+462 337 448 389 420 427 _c
+392 465 354 484 306 484 _c
+306 560 _m
+384 560 445 534 490 484 _c
+534 433 557 363 557 273 _c
+557 183 534 113 490 63 _c
+445 12 384 -13 306 -13 _c
+227 -13 165 12 121 63 _c
+77 113 55 183 55 273 _c
+55 363 77 433 121 484 _c
+165 534 227 560 306 560 _c
+_cl}_d
+/r{411 0 91 0 411 560 _sc
+411 463 _m
+401 469 390 473 378 476 _c
+366 478 353 480 339 480 _c
+288 480 249 463 222 430 _c
+194 397 181 350 181 288 _c
+181 0 _l
+91 0 _l
+91 547 _l
+181 547 _l
+181 462 _l
+199 495 224 520 254 536 _c
+284 552 321 560 365 560 _c
+371 560 378 559 386 559 _c
+393 558 401 557 411 555 _c
+411 463 _l
+_cl}_d
+/s{{521 0 54 -13 472 560 _sc
+443 531 _m
+443 446 _l
+417 458 391 468 364 475 _c
+336 481 308 485 279 485 _c
+234 485 200 478 178 464 _c
+156 450 145 430 145 403 _c
+145 382 153 366 169 354 _c
+185 342 217 330 265 320 _c
+296 313 _l
+360 299 405 279 432 255 _c
+458 230 472 195 472 151 _c
+472 100 452 60 412 31 _c
+372 1 316 -13 246 -13 _c
+216 -13 186 -10 154 -5 _c
+}_e{122 0 89 8 54 20 _c
+54 113 _l
+87 95 120 82 152 74 _c
+184 65 216 61 248 61 _c
+290 61 323 68 346 82 _c
+368 96 380 117 380 144 _c
+380 168 371 187 355 200 _c
+339 213 303 226 247 238 _c
+216 245 _l
+160 257 119 275 95 299 _c
+70 323 58 356 58 399 _c
+58 450 76 490 112 518 _c
+148 546 200 560 268 560 _c
+301 560 332 557 362 552 _c
+391 547 418 540 443 531 _c
+}_e{_cl}_e}_d
+/t{392 0 27 0 368 702 _sc
+183 702 _m
+183 547 _l
+368 547 _l
+368 477 _l
+183 477 _l
+183 180 _l
+183 135 189 106 201 94 _c
+213 81 238 75 276 75 _c
+368 75 _l
+368 0 _l
+276 0 _l
+206 0 158 13 132 39 _c
+106 65 93 112 93 180 _c
+93 477 _l
+27 477 _l
+27 547 _l
+93 547 _l
+93 702 _l
+183 702 _l
+_cl}_d
+/x{592 0 29 0 559 547 _sc
+549 547 _m
+351 281 _l
+559 0 _l
+453 0 _l
+294 215 _l
+135 0 _l
+29 0 _l
+241 286 _l
+47 547 _l
+153 547 _l
+298 352 _l
+443 547 _l
+549 547 _l
+_cl}_d
+/y{592 0 30 -207 562 547 _sc
+322 -50 _m
+296 -114 271 -157 247 -177 _c
+223 -197 191 -207 151 -207 _c
+79 -207 _l
+79 -132 _l
+132 -132 _l
+156 -132 175 -126 189 -114 _c
+203 -102 218 -75 235 -31 _c
+251 9 _l
+30 547 _l
+125 547 _l
+296 119 _l
+467 547 _l
+562 547 _l
+322 -50 _l
+_cl}_d
+end readonly def
+
+/BuildGlyph
+ {exch begin
+ CharStrings exch
+ 2 copy known not{pop /.notdef}if
+ true 3 1 roll get exec
+ end}_d
+
+/BuildChar {
+ 1 index /Encoding get exch get
+ 1 index /BuildGlyph get exec
+}_d
+
+FontName currentdict end definefont pop
+end
+%%EndProlog
+mpldict begin
+-342 73.8 translate
+1296 644.4 0 0 clipbox
+100000 setmiterlimit
+gsave
+0 0 m
+1296 0 l
+1296 644.4 l
+0 644.4 l
+cl
+1.000 setgray
+fill
+grestore
+gsave
+162 93.927273 m
+618.545455 93.927273 l
+618.545455 550.472727 l
+162 550.472727 l
+cl
+1.000 setgray
+fill
+grestore
+gsave
+456.545 456.545 162 93.927 clipbox
+[1.0 0.0 0.0 1.0 0.0 0.0] concat
+162.0 550.472727273 translate
+456.545454545 -456.545454545 scale
+/DataString 40 string def
+40 40 8 [ 40 0 0 -40 0 40 ]
+{
+currentfile DataString readhexstring pop
+} bind false 3 colorimage
+fdfee2fcfed7fdfee2fcfdddfafdcdfafcd0f4fab6d2ec9fc2e698d0ec9ee1f2a8dcf0a5c1e597b5e091b4e091bee49586cc7edcf0a595d284ebf7b0f9fcccef
+f8b3e4f4abf8fcbff9fcc6fafdccfafccfa4d98aa4d98aafdd8fb3df91f9fdc9fbfdd8f6fbb9ebf6b0e4f4abebf7b0fbfdd0fcfdd5fefee3fcfed7fdfee2fdfe
+e2fcfddbf9fcc9f8fcc2f8fcc7e4f3aac3e698c9e99bd2ec9fbfe596cfeb9dd0eb9ec5e799c4e69884cb7dc9e99bdbf0a496d385f3fab6f8fbc4dff2a7e6f5ad
+e3f4aaf3fab6f9fcc7f6fbbdf7fbc1aadc8df6fbb9daf0a4fbfdd4fafcd0f4fab6eef7b2eaf7affafdccfbfdd4fcfdd5fcfed7fdfedcfbfdd8f8fcc2f7fcbcf7
+fcbaf6fbbae4f4abc9e89bbde395c5e799b3df91ccea9cd0ec9ecfeb9dc9e89bb5df9184cb7dc9e99bf3f9b5f9fcccf7fbc2d5eea1d1ec9fd9f0a3dff2a7eaf7
+afeef8b2f9fccdfafccfacdc8df6fbbdfafcd3f7fbc2edf8b2e8f6aeebf7b0f8fcc2f7fcbbf8fcbff7fcbef7fcbcf8fcc2f8fcc2f7fcc2f7fcbdf6fbb9e6f4ac
+d7eea1c4e698b7e193b2df90cae99ce5f4acebf6b0def1a6c8e89aa9db8c84cb7dd8efa2f5fbb8f1f9b4cae99cd9f0a3f1f9b4ecf7b1d4eea0d0ec9ef7fcbafa
+fccff7fbc0d5eea1f6fbb8f2fab5f5fab7f5fab7f6fbbdf7fcbaf8fcc5f8fcc8f9fcc9fafdcdfcfddbf9fdc8fdfddffcfddbf9fccdf2f9b5e7f5addcf0a5d4ed
+a0d6eea1dcf1a5f4fab7f7fbc0eaf6afc5e79982ca7db9e193c9e99be0f2a8e3f3aac3e698e9f6aff8fcc8f6fbbac6e89abfe596c6e89acae99cceeb9ef4fab6
+eaf7aff1f9b4f5fbb8f5fbb8f5fbb8f8fbc4f5fbb7f3fab6fbfdd3fdfde1fdfde2f9fdc9fefee2fdfee1fcfddaf8fcc7f2f9b5eaf6afe4f4abe4f3aaecf7b1e7
+f5adf1f9b4daf0a35eb96cc9e89be4f4abdbf0a4c2e698d0eb9fbae294eaf7aff6fbbdcdeb9dd3eda0e0f2a9f8fbc5fafcd2f7fbc0f6fbb9e0f2a8e6f5ade3f4
+aae5f5acf7fcbcfafccff8fbc4f6fbb9fbfdd4fefee4fefee4fdfde2fafdcafefee2fdfee1fbfdd7f8fbc5f0f8b3e5f4ac73c37677c57878c67977c57854b466
+b3df9053b366e7f5addff1a7b0de8fc1e597afdd8fd8efa2cdeb9ddef1a6dbf0a4d3eda0d7efa2fbfdd6f8fbc4eef7b2ddf1a6ddf1a6d4eea0daf0a4f4fab6f9
+fcc6f8fcbffafccffdfee2ffffe5ffffe5fefee4fefee4fefee4fefee4fdfddffbfcd4f6fbbdeaf6af71c375f6fbbbeef8b352b36669be71abdb8c3fa95bd9f0
+a3d0eb9e9fd688b2df90a2d889d1ec9fd9efa3ceeb9ef0f8b3d5eea1fbfdd8fafdd0f6fbbbf3f9b5e8f5aed8efa2ccea9cd1ec9fecf7b1f6fbb8fafdd0fcfdde
+fefee4ffffe5ffffe5ffffe5ffffe5ffffe5ffffe5fefee4fcfddef9fccdebf6b06ec174e7f5ad58b66873c376afdd8e99d38538a055afdd8fb1de8f89cd7f91
+d1838ccf81c5e799d9f0a3f1f9b4d5eea1fbfdd8fcfddbf9fccdf5fbb8f3f9b5ebf6b0d8efa2c1e597c2e698e2f3a9f8fcc3fcfddafdfee1fefee0fefee3ffff
+e5ffffe5ffffe5ffffe5ffffe5fefee4fdfde1fbfcd4eef7b269be71d0eb9e58b668b1de8f92d08272c275379f5581c97c9cd58683ca7c73c37670c275afdd8f
+dcf1a5f8fcc6fbfdd6fcfeddfbfdd7f9fcc9f4fab7ebf6b0e0f2a8cdea9dbae294b8e293d5eea1f7fcbcfbfdd4fdfedbfbfdd4fdfedffefee3ffffe5ffffe5fe
+fee4fbfdd0fbfdd0fafdcefbfdd8f5fab75bb86a5db86bc5e799abdb8c9fd688a1d7888acd7f369c537dc87b86cb7e7ec87a6ec17493d18377c578e6f5adf8fc
+c1f9fcc5f8fcc5f4fab8eef8b2e8f5aedef1a6cfeb9dbee495b8e293d0ec9ef0f9b4f7fcbef9fcc5f6fbb8fbfdd0fdfedefefee3fefee4fbfdd0fefee4fdfde2
+fafdcdf9fcc9e9f6ae5bb86acbe99bd9efa3c0e4969bd587a9db8ca9db8c2e924c6ec17495d28490d08263bb6d54b46690d0825eb96c5bb86a73c376ddf1a6df
+f2a7dbf1a4dff2a7daf0a4d4eda0cfeb9dc4e698cdeb9de1f3a9e4f4abe8f6aeeef8b2f7fcbafbfdd0fdfedefefee3fefee4ffffe5fefee4fdfde1f8fcc77ac7
+794fb264dbf0a4dcf0a5d2ec9fafdd8e84cb7d8fcf81278a4752b36673c37679c6785db86b5cb76a41ab5d39a15612773d197c3f73c376ccea9cd5eea1d9f0a3
+d7efa2daf0a4e4f4abe4f3aadaf0a3e2f3a9edf7b1f0f8b3f6fbb9eff8b3f7fcbafafdcefdfedefefee3ffffe5fefee4fdfde1f7fbc15db86b40aa5c62bb6ece
+eb9ec7e799a6d98a5db86b4aae611b7e403aa2575eb96c58b66851b2653ea85a1f81410b703a30954e99d3851d7f417ac779daf0a3dcf0a5dbf1a4e3f4aaf4fa
+b7f7fbc1f4fab6f7fbc2f9fccdf9fccbf9fccdf5fab7ecf7b1f5fbb7fbfdd1fdfedffefee3fefee2fcfddbf4fab763bb6d39a15658b66891d1839bd5878acd7f
+46ac5f369e5412773d2e924c43ac5e3fa95b3ba4581a7d40036a38066d392789461e804152b366c4e698e5f4abeef7b2f2f9b5f6fbbbf9fcccf9fccdf7fcbcfb
+fdd4fcfddbfcfddafcfddaf9fccbeef7b2e4f4abf8fcbffcfed9fdfee0fcfdddf9fccce9f6aeb3df9043ac5e94d18354b46641ab5d379e542b8f4a2a8e490c71
+3b23844330954e298c4813773d0064353ea85a49ae6027894638a05594d1830b703ad0ec9ef6fbbaf7fbc1f7fcbaf9fccbf7fcbaf7fcbcfafdcefbfdd1fdfedb
+fcfdd6fafcd0f1f9b4dcf1a5f2fab5fafdcefbfdd3f9fcc9f0f9b4e4f4ab9ed58740aa5cb1de8f8fcf813297502586441b7e401d7f41066d3912773d13773d05
+6c381c7e4000603345ad5f50b164359b52006837076d39acdc8d6bbf72e3f4aaf8fcc5f7fcc2f7fcbafbfcd4f4fab7f0f9b4eff8b3fafdcdf5fbb8f9fcc9eef7
+b2dbf1a4e5f5acf5fbb8f4fab6f1f9b4eff8b3eaf6af94d1833ba45897d3857cc77a30954e1c7e4013773d13773d0d723a00613400563000512d005730005730
+268947005c320063356dc073bbe2945eb96cabdb8c6bbf72e7f5adf8fcc1f8fcc8f8fbc4e9f6afe6f5ade6f5adf2fab5f0f9b4f4fab7e1f3a9dbf1a4ddf1a6e5
+f5aceaf7aff6fbb9f5fab7e0f2a87bc67933995151b265379f551c7e4021824110753c00653600593100532e004529004529004729005830004c2c00542f3ba3
+5882ca7da7da8b90d08259b769acdc8dd7efa2e7f5adeff8b3e7f5adeaf7afeff8b3e7f5adedf8b2e7f5addff2a7e0f2a8d5eea1dbf1a4ddf1a6e3f4aae7f5ad
+def1a6acdc8d369c533298502c904b1b7e400b703a0b703a02683600512d004529004529004529004529004529004529004b2b0e733b39a1564cb0627ac7799b
+d587acdc8db3df91c6e89ad8efa2e0f2a8e3f4aaeff8b3f4fab7e5f4abe5f4abc9e99bd4eea0dff1a7d8efa2d4eea0d7eea2d1ec9fc9e99bb9e19386cb7e288b
+482789461b7e400d723b006736006033005b31004529004529004529004529004529004529004529004529005a312c904b48ae606cc07387cc7fbde395c8e89a
+c5e799d1ec9fdff2a7e0f2a8ddf1a6ceeb9ecae99cc9e99bb2df90d0ec9ee6f4ace6f4ace3f3aad4eea0d6eea1d4eda0c7e79997d3842c904b2283420e733b05
+6c38056c38005f3200542e004729004529004529004529004529004529004a2b005c32268946005f330d723b4db16369be71a5d98bc6e89ad7eea1bde395ccea
+9cdaf0a3c9e99bc6e89ad8efa2bae294b6e092bfe596eff8b3edf7b1e7f5add8efa2c3e698bde395b6e092a3d8895cb76a218241177a3e0e733b0c713a006234
+005930004b2b004529004529004529004529004529004f2d15783d0168370067360062340e733b2f944d3ba45854b466288b48278a472f924cceeb9ec3e698c3
+e698c9e89bacdc8dddf1a5c6e89ae5f5acddf1a6e9f6aee4f4abc7e799bae294a4d98b90d0826bbf72369e54298d48177a3e0b703a076e39056c38004e2c004a
+2a004c2b004b2b004b2b004629004c2c0056302a8e492f944d40aa5c0067360e733b10753c1c7e4099d385c7e799bde4953397509ad4869bd587a4d98ab7e192
+f6fbbad0eb9eccea9ce0f2a8d8efa2d1ec9fcbe99bb6e0929ad48686cb7e6fc1743fa95b33995023844310753c14773d0d723a00532e00572f00542f005b3100
+593000522e006334076e39005c322e934d2c904b056c3839a15639a15639a15675c477bee496d3ed9fb2df902f944d30954e349951e5f4acf8fcc7f6fbbad4ed
+a0daf0a4edf7b1b7e193acdc8da4d98aafdd8e90d08286cb7e55b4663aa3572d914b14773d0f743c0a6f39005730005d32005f33036a37026937006736005a31
+076e3916793d006134369c5350b1640e733b5ab76946ac5e54b4668ccf81aadc8d9fd688abdb8cd4eda0c1e597dff2a7eaf7aff9fccbc2e698bee496bfe596f6
+fbbde3f3aac9e89bc8e89aaedc8e85cb7d68bd7040aa5c3da6592283422182411c7e40006635076e39056b3812763c11763c15783d0063340269371b7e403399
+505db86b11763d8dce8094d1837ec87a5db86b94d18393d1837fc97b93d183daf0a3ccea9cf6fbb9f8fbc4ecf7b1f9fccdbce395bbe395f7fbc1e4f4abd8efa2
+c5e799abdb8c76c4774db16351b26540aa5c30954e39a1560d723b248544379f54369d530d723b288b47339950359b52339950197c3f3ba45881c97c4eb16316
+783eafdd8eabdb8c74c3768ccf8187cc7fccea9ce0f2a8addd8ebae294b8e293bbe395f8fbc5f9fcc9bbe395bbe395f6fbbdeff8b3def1a6cdea9d83ca7c48ae
+605fb96c4aaf615ab76931964f288c4815783e58b66872c27563bb6d197c3f3fa95b48ae6079c67894d18388cc7e1d7f4154b4665db86b99d385b7e193d0eb9e
+bce2948dce803ca559eff8b3f9fcc9f2f9b5a5d98beff8b3f3f9b5bbe395f5fbb8f2f9b5d9efa3ddf1a6ddf1a6e6f4acb6e09274c3763ca55957b56738a05535
+9b5249ae602687452f944d24854470c27423844386cb7e63bb6d5bb86a8fd081a3d88997d384288b489ed587c0e496c4e698cfeb9ee3f3aad0eb9e3aa257d6ee
+a1e5f5acf8fcc5f6fbb9a2d889b4e091ddf1a6edf7b1bae294d1ec9fe7f5adf6fbbdf7fbc1daf0a3abdb8c6dc07339a257379f552c904b31964f3da65a51b265
+2485442586441f814180c87b99d38570c27476c4776bbf726ec17467bd7072c275349a51b0de8fccea9ce4f4abd7eea13ba45839a156dff2a7f3f9b5b4e091a5
+d98baddd8ee5f4acd7efa2e5f4acc1e597bde395c8e89ae5f4abe4f3abbbe395b5df9177c57851b265369c533ba45842ab5d44ac5e4baf613ea85a228342369e
+542485447cc77a6cc07370c27595d2846fc17460ba6d6ec1749ad48633995139a055e3f3aa3ba257f4fab6f7fbc0f8fbc4c1e597eef7b2b4e091e7f5adf9fccb
+ccea9cc3e698c1e597dff1a7e2f3a9c9e99bbde395c8e89ad0eb9e73c37679c67847ad5f52b3667bc6797bc67972c27577c578359b52379f556fc17427894672
+c27575c477a4d98ab6e09270c27478c6798bce80d0eb9ee5f4ac3da65a369c53f7fcbefbfcd4f9fccdf8fbc4bfe596f3f9b5bae294f4fab6c1e597d0ec9eddf1
+a5f0f8b3f7fbbef5fab7edf7b1bae294aadc8d87cc7fcbe99b6abe7167bd70c0e496b6e09297d38497d38488cc7e3ca55978c57880c87b298c4885cb7d78c679
+78c67987cc7fccea9c86cc7e96d385edf8b2f7fbc1ecf7b1f8fcc5fafdcefbfdd0fcfddaf6fbbabde395dcf0a5ceeb9eccea9cdbf0a4d0ec9edff2a7f6fbb8f9
+fccdfafccfeff8b3c2e698eef7b296d38581c97c78c679daf0a3d4eda0b1de8fb2de9046ad5f41ab5d8fcf818ccf819fd68899d38581c97ca1d789c4e69891d1
+8387cc7f96d385f8fbc4fafcd3f3fab6f9fdc9fcfddafcfdddfcfdd5fcfddefbfdd6fafcd0d6eea1f6fbbbd8efa2c5e799d5eea1e7f5adf9fdcbf8fcc8cdeb9d
+eff8b4fbfcd4f8fcc8e1f2a8b5df92f0f8b3e5f4acc1e597bde395c0e496c4e698b1de8fa6d98ab3df91d4eda0d7eea191d18386cc7e87cc7f8bce80e1f2a8f4
+fab6f8fcc2f6fbb8fbfdd7fbfdd1fbfdd1fdfedffefee4fefee4fdfde1fafcd3fbfdd6e6f4acdef1a6e7f5ade0f2a8fafdccfafcd0edf7b1c2e698fafccaf8fb
+c5c2e698f0f8b3f8fcc7f0f8b3d8efa2d0eb9ed7eea1cfeb9dc1e597d0eb9eddf1a5f4fab7f1f9b4eef7b2c4e69889cd7fa8da8cc2e698ceeb9ef2fab5fafcd3
+fdfddffbfdd1fbfdd1fefee0ffffe5fefee4fefee2fdfde2edf8b2fafcd3f7fbc0eaf7aff0f8b4f9fcc5f9fccdf2f9b5b4e091f6fbb8f3f9b5c2e698f6fbbbf7
+fbbeedf7b1e8f5aee5f4acdbf1a4e1f2a8d1ec9fe4f3aaf0f8b4f9fcc9f5fbb7fbfdd6f5fab79ad4869dd687c5e799c9e99bf7fbc0f7fcbefcfddafafdcffafd
+cefbfdd3fefee2fdfee1fcfed7fefee0fcfddeecf7b1ebf7b0f6fbbde5f4abe4f4abeef8b3e0f2a8a7da8bd8efa2c6e89aeef7b2f5fab7edf8b2ebf7b0f2f9b5
+e4f4abd4eea0e1f2a8d0ec9edbf1a4e5f5acf2fab5fbfdd7fbfdd7aadc8df4fab7a4d98aacdc8dcdeb9df9fdc9fbfdd7f8fcbff9fcc7f7fcbbf9fdc8fcfdd9fc
+fdd5fdfee1fcfed7fcfdd7fafcd3fcfddeecf7b1f8fbc5f6fbb9e0f2a8ccea9c9dd687afdd8fe4f4abf2f9b5e2f3a9dbf1a4dcf1a5dcf0a58bce8090d082d7ef
+a2ddf1a6f4fab6edf7b1eaf7affafdcefafcd3a4d98aa4d98aa4d98ab4e091eaf6b0fafdccfcfdddfafcd3f6fbb8f2fab6eef8b2f9fcc5fdfddbfefee2fdfee2
+grestore
+1.000 setlinewidth
+0 setlinejoin
+2 setlinecap
+[] 0 setdash
+0.000 setgray
+gsave
+618.545455 93.927273 m
+618.545455 550.472727 l
+stroke
+grestore
+gsave
+162 93.927273 m
+162 550.472727 l
+stroke
+grestore
+gsave
+162 550.472727 m
+618.545455 550.472727 l
+stroke
+grestore
+gsave
+162 93.927273 m
+618.545455 93.927273 l
+stroke
+grestore
+0.500 setlinewidth
+1 setlinejoin
+0 setlinecap
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+167.707 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+167.707 550.473 o
+grestore
+/BitstreamVeraSans-Roman findfont
+12.000 scalefont
+setfont
+gsave
+163.886506 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+224.775 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+224.775 550.473 o
+grestore
+gsave
+220.954688 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+281.843 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+281.843 550.473 o
+grestore
+gsave
+274.202557 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /one glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+338.911 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+338.911 550.473 o
+grestore
+gsave
+331.270739 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /one glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+395.98 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+395.98 550.473 o
+grestore
+gsave
+388.338920 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /two glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+453.048 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+453.048 550.473 o
+grestore
+gsave
+445.407102 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /two glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+510.116 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+510.116 550.473 o
+grestore
+gsave
+502.475284 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /three glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+567.184 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+567.184 550.473 o
+grestore
+gsave
+559.543466 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /three glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+/BitstreamVeraSans-Roman findfont
+25.000 scalefont
+setfont
+gsave
+382.874290 54.302273 translate
+0.000000 rotate
+0.000000 0.000000 m /x glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+162 99.6341 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+618.545 99.6341 o
+grestore
+/BitstreamVeraSans-Roman findfont
+12.000 scalefont
+setfont
+gsave
+150.359375 96.321591 translate
+0.000000 rotate
+0.000000 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+162 156.702 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+618.545 156.702 o
+grestore
+gsave
+150.359375 153.389773 translate
+0.000000 rotate
+0.000000 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+162 213.77 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+618.545 213.77 o
+grestore
+gsave
+142.718750 210.457955 translate
+0.000000 rotate
+0.000000 0.000000 m /one glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+162 270.839 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+618.545 270.839 o
+grestore
+gsave
+142.718750 267.526136 translate
+0.000000 rotate
+0.000000 0.000000 m /one glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+162 327.907 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+618.545 327.907 o
+grestore
+gsave
+142.718750 324.594318 translate
+0.000000 rotate
+0.000000 0.000000 m /two glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+162 384.975 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+618.545 384.975 o
+grestore
+gsave
+142.718750 381.662500 translate
+0.000000 rotate
+0.000000 0.000000 m /two glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+162 442.043 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+618.545 442.043 o
+grestore
+gsave
+142.718750 438.730682 translate
+0.000000 rotate
+0.000000 0.000000 m /three glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+162 499.111 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+618.545 499.111 o
+grestore
+gsave
+142.718750 495.798864 translate
+0.000000 rotate
+0.000000 0.000000 m /three glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+/BitstreamVeraSans-Roman findfont
+25.000 scalefont
+setfont
+gsave
+132.515625 314.801563 translate
+90.000000 rotate
+0.000000 0.000000 m /y glyphshow
+grestore
+/BitstreamVeraSans-Roman findfont
+30.000 scalefont
+setfont
+gsave
+155.530540 555.472727 translate
+0.000000 rotate
+0.000000 0.000000 m /P glyphshow
+18.090820 0.000000 m /h glyphshow
+37.104492 0.000000 m /e glyphshow
+55.561523 0.000000 m /r glyphshow
+67.895508 0.000000 m /o glyphshow
+86.250000 0.000000 m /m glyphshow
+115.473633 0.000000 m /e glyphshow
+133.930664 0.000000 m /n glyphshow
+152.944336 0.000000 m /e glyphshow
+171.401367 0.000000 m /space glyphshow
+180.937500 0.000000 m /one glyphshow
+200.024414 0.000000 m /space glyphshow
+209.560547 0.000000 m /parenleft glyphshow
+221.264648 0.000000 m /f glyphshow
+231.826172 0.000000 m /i glyphshow
+240.161133 0.000000 m /n glyphshow
+259.174805 0.000000 m /d glyphshow
+278.217773 0.000000 m /i glyphshow
+286.552734 0.000000 m /n glyphshow
+305.566406 0.000000 m /g glyphshow
+324.609375 0.000000 m /space glyphshow
+334.145508 0.000000 m /t glyphshow
+345.908203 0.000000 m /h glyphshow
+364.921875 0.000000 m /e glyphshow
+383.378906 0.000000 m /space glyphshow
+392.915039 0.000000 m /n glyphshow
+411.928711 0.000000 m /e glyphshow
+430.385742 0.000000 m /s glyphshow
+446.015625 0.000000 m /t glyphshow
+457.778320 0.000000 m /parenright glyphshow
+grestore
+gsave
+709.854545 93.927273 m
+1166.4 93.927273 l
+1166.4 550.472727 l
+709.854545 550.472727 l
+cl
+1.000 setgray
+fill
+grestore
+gsave
+456.545 456.545 709.855 93.927 clipbox
+[1.0 0.0 0.0 1.0 0.0 0.0] concat
+709.854545455 550.472727273 translate
+456.545454545 -456.545454545 scale
+/DataString 40 string def
+40 40 8 [ 40 0 0 -40 0 40 ]
+{
+currentfile DataString readhexstring pop
+} bind false 3 colorimage
+ffffccffffccffffccfffecbfff0a8fefecbfebc57fef2aefeda78ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccfefecbfeda78ffffccffffccffffccffffccffffccffffccffff
+ccfefecbfedc7dffeea3fefecbfda948fefecbffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccfefecbfedc7dffffccffffccffffccffffccffffccffffccfefecbfeec9ffefecbff
+eea3fefecbfde999fed26fffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccfefecbfede81fefecbfee289ffffccfee48efee691feea9afeeb9dfffecbfeeda1feec9ffeeb9d
+fefecbffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccfefecbfee085fefecbfee38cfefecbfee794fee997fefecbffffccfffecbfefecbfefecbffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccfefecbffffccfefecbffffccfefecbfefecbfefecbfed26ffed774ffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccfefecbfefecbffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccfefecbfee289ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccfffecbfff9bf
+fed976fef7bafc8c3cfff7baffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccfffecbfffac0fffecbfedd80fefecbfdd6
+73fee085fff3b0fff7baffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccfffecbfffac0fed571fffac0fefac1feda78fee691ff
+f8befff7b8ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccfffecbfefecbfffecbfffecbfefecbfdb652fc6130fffecbfff7b8
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccfefecbfeda79ffffccffffccfefecbfeec9efef1acfefecafdaa49fffecbfff6b7ffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccfefecbfed26ffed774fefecbffffccfefecbfeea9afedd7efefecbfee28afde087fedf84fff5b4ffffccffffccffffccffffccff
+ffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccfefecbfefecbffffccffffccfefecbfee997fefecbfeb650feb54ffefecbfede81fff4b3ffffccffffccffffccffffccffffccffffccffffcc
+ffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccfefecbfed26fffffccff
+ffccffffccffffccffffccfefecbfee694fed673fefecbfeba54ffffccfefecbfec864ffffccffffccffffccffffccffffccffffccffffccffffccffffccffff
+ccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccffffccfefecbfed774ffffccffffccffffcc
+grestore
+1.000 setlinewidth
+0 setlinejoin
+2 setlinecap
+gsave
+1166.4 93.927273 m
+1166.4 550.472727 l
+stroke
+grestore
+gsave
+709.854545 93.927273 m
+709.854545 550.472727 l
+stroke
+grestore
+gsave
+709.854545 550.472727 m
+1166.4 550.472727 l
+stroke
+grestore
+gsave
+709.854545 93.927273 m
+1166.4 93.927273 l
+stroke
+grestore
+0.500 setlinewidth
+1 setlinejoin
+0 setlinecap
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+715.561 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+715.561 550.473 o
+grestore
+/BitstreamVeraSans-Roman findfont
+12.000 scalefont
+setfont
+gsave
+711.741051 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+772.63 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+772.63 550.473 o
+grestore
+gsave
+768.809233 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+829.698 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+829.698 550.473 o
+grestore
+gsave
+822.057102 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /one glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+886.766 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+886.766 550.473 o
+grestore
+gsave
+879.125284 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /one glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+943.834 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+943.834 550.473 o
+grestore
+gsave
+936.193466 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /two glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1000.9 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1000.9 550.473 o
+grestore
+gsave
+993.261648 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /two glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1057.97 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1057.97 550.473 o
+grestore
+gsave
+1050.329830 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /three glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1115.04 93.9273 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+0 -4 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1115.04 550.473 o
+grestore
+gsave
+1107.398011 80.802273 translate
+0.000000 rotate
+0.000000 0.000000 m /three glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+/BitstreamVeraSans-Roman findfont
+25.000 scalefont
+setfont
+gsave
+930.728835 54.302273 translate
+0.000000 rotate
+0.000000 0.000000 m /x glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+709.855 99.6341 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1166.4 99.6341 o
+grestore
+/BitstreamVeraSans-Roman findfont
+12.000 scalefont
+setfont
+gsave
+698.213920 96.321591 translate
+0.000000 rotate
+0.000000 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+709.855 156.702 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1166.4 156.702 o
+grestore
+gsave
+698.213920 153.389773 translate
+0.000000 rotate
+0.000000 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+709.855 213.77 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1166.4 213.77 o
+grestore
+gsave
+690.573295 210.457955 translate
+0.000000 rotate
+0.000000 0.000000 m /one glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+709.855 270.839 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1166.4 270.839 o
+grestore
+gsave
+690.573295 267.526136 translate
+0.000000 rotate
+0.000000 0.000000 m /one glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+709.855 327.907 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1166.4 327.907 o
+grestore
+gsave
+690.573295 324.594318 translate
+0.000000 rotate
+0.000000 0.000000 m /two glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+709.855 384.975 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1166.4 384.975 o
+grestore
+gsave
+690.573295 381.662500 translate
+0.000000 rotate
+0.000000 0.000000 m /two glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+709.855 442.043 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1166.4 442.043 o
+grestore
+gsave
+690.573295 438.730682 translate
+0.000000 rotate
+0.000000 0.000000 m /three glyphshow
+7.634766 0.000000 m /zero glyphshow
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+709.855 499.111 o
+grestore
+gsave
+/o {
+gsave
+newpath
+translate
+0.5 setlinewidth
+1 setlinejoin
+0 setlinecap
+0 0 m
+-4 0 l
+
+gsave
+0.000 setgray
+fill
+grestore
+stroke
+grestore
+} bind def
+1166.4 499.111 o
+grestore
+gsave
+690.573295 495.798864 translate
+0.000000 rotate
+0.000000 0.000000 m /three glyphshow
+7.634766 0.000000 m /five glyphshow
+grestore
+/BitstreamVeraSans-Roman findfont
+25.000 scalefont
+setfont
+gsave
+680.370170 314.801562 translate
+90.000000 rotate
+0.000000 0.000000 m /y glyphshow
+grestore
+/BitstreamVeraSans-Roman findfont
+30.000 scalefont
+setfont
+gsave
+695.830398 555.472727 translate
+0.000000 rotate
+0.000000 0.000000 m /P glyphshow
+18.090820 0.000000 m /h glyphshow
+37.104492 0.000000 m /e glyphshow
+55.561523 0.000000 m /r glyphshow
+67.895508 0.000000 m /o glyphshow
+86.250000 0.000000 m /m glyphshow
+115.473633 0.000000 m /o glyphshow
+133.828125 0.000000 m /n glyphshow
+152.841797 0.000000 m /e glyphshow
+171.298828 0.000000 m /space glyphshow
+180.834961 0.000000 m /two glyphshow
+199.921875 0.000000 m /space glyphshow
+209.458008 0.000000 m /parenleft glyphshow
+221.162109 0.000000 m /f glyphshow
+231.723633 0.000000 m /o glyphshow
+250.078125 0.000000 m /r glyphshow
+262.412109 0.000000 m /a glyphshow
+280.795898 0.000000 m /g glyphshow
+299.838867 0.000000 m /i glyphshow
+308.173828 0.000000 m /n glyphshow
+327.187500 0.000000 m /g glyphshow
+346.230469 0.000000 m /space glyphshow
+355.766602 0.000000 m /f glyphshow
+366.328125 0.000000 m /o glyphshow
+384.682617 0.000000 m /r glyphshow
+397.016602 0.000000 m /space glyphshow
+406.552734 0.000000 m /f glyphshow
+417.114258 0.000000 m /o glyphshow
+435.468750 0.000000 m /o glyphshow
+453.823242 0.000000 m /d glyphshow
+472.866211 0.000000 m /parenright glyphshow
+grestore
+
+end
+showpage
